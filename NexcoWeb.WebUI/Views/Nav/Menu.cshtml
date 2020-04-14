@@ -1,0 +1,31 @@
+﻿@model IEnumerable<string>
+
+@Html.ActionLink("Budget", "List", "Budget", null,
+new { @class = "btn btn-block btn-default btn-lg" })
+
+
+@Html.ActionLink("Income", "List", "Income", null,
+new { @class = "btn btn-block btn-default btn-lg" })
+
+@Html.ActionLink("Expenses", "List", "Expenditure", null,
+new { @class = "btn btn-block btn-default btn-lg" })
+
+@*@foreach (var link in Model)
+{
+    @Html.RouteLink(link, new
+{
+    controller = "Income",
+    action = "List",
+    description = link,
+    page = 1
+},
+    new { 
+        @class = "btn btn-block btn-default btn-lg"
+          + (link == ViewBag.SelectedDescription? " btn-primary" : "")   
+}
+    )
+}*@
+
+
+
+

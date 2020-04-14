@@ -1,0 +1,14 @@
+﻿@model NexcoWeb.WebUI.Models.IncomesListViewModel
+@using NexcoWeb.WebUI.HtmlHelpers;
+
+@{
+    ViewBag.Title = "Incomes";
+}
+
+@foreach (var i in Model.Incomes)
+{
+    @Html.Partial("IncomeSummary", i)
+}
+    <div class="btn-group pull-right">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
+    </div>

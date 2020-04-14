@@ -1,0 +1,16 @@
+﻿@model NexcoWeb.WebUI.Models.BudgetsListViewModel
+@using NexcoWeb.WebUI.HtmlHelpers;
+
+@{
+    ViewBag.Title = "Budgets";
+}
+<h3>Budget</h3>
+@foreach (var i in Model.Budgets)
+{
+    @Html.Partial("BudgetSummary", i)
+}
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
+</div>
+

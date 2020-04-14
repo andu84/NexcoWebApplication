@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Nexco Financial Application</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse" role="navigation">
+        <a class="navbar-brand" href="#"> Nexco Financial Management App</a>
+    </div>
+    <div class="row panel">
+        <div id="categoris" class="col-lg-3">
+            @Html.Action("Menu", "Nav")
+        </div>
+        <div class="col-lg-7">
+            @RenderBody()
+        </div>
+    </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Nexco Financial Management Application</p>
+        </footer>
+    
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
