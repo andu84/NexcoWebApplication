@@ -1,0 +1,121 @@
+﻿@model IEnumerable<NexcoWeb.Domain.Entities.Expenditure>
+
+@{
+    ViewBag.Title = "IndexExpenditure";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>IndexExpenditure</h2>
+
+
+@Html.ActionLink("Create New", "Create")
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div>All Incomes</div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condesed table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Travel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Food)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Entertaiment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Auto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HouseholdExpenses)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Clothing)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Loan)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OtherExpenses)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DescriptionExpenditure)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExpensesAddedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalExpense)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DisplayTextExpenses)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DisplayTotalExpenses)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DisplayDateExpenses)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Travel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Food)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Entertaiment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Auto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HouseholdExpenses)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Clothing)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Loan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OtherExpenses)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DescriptionExpenditure)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExpensesAddedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalExpense)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DisplayTextExpenses)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DisplayTotalExpenses)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DisplayDateExpenses)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ExpenditureId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ExpenditureId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ExpenditureId })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Add new Expenditure", "Create", null, new { @class = "btn btn-defaul" })
+    </div>
+</div>

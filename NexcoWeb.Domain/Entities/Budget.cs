@@ -13,6 +13,8 @@ namespace NexcoWeb.Domain.Entities
         public Income Income { get; set; }
         public Expenditure Expenditure { get; set; }
 
+        
+
         public int? TotalBudget
         {
 
@@ -22,14 +24,14 @@ namespace NexcoWeb.Domain.Entities
                 return Income?.TotalIncome - Expenditure?.TotalExpense;
 
             }
-            set
-            {
-                TotalBudget = value;
-            }
+            //set
+            //{
+            //    TotalBudget = value;
+            //}
 
         }
 
-
+        
 
         public string DisplayTextBudget
         {

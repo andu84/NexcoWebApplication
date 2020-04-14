@@ -13,5 +13,7 @@ namespace NexcoWeb.WebUI.Models
         public IEnumerable<Budget> Budgets { get; set; }
         public string CurrentDescription { get; set; }
         public PagingInfo PagingInfo { get; set; }
+        public List<Income> IncomeList { get; set; }
+        public List<Expenditure> ExpenditureList { get; set; }
     }
 }

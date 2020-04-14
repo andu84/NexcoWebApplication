@@ -1,0 +1,84 @@
+﻿@model IEnumerable<NexcoWeb.Domain.Entities.Income>
+
+@{
+    ViewBag.Title = "IndexIncome";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>IndexIncome</h2>
+
+<p>
+   
+</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div>All Incomes</div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condesed table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DescriptionIncome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DisplayDateIncomes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InterestRate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OtherJob)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OtherIncome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalIncome)
+                </th>             
+                <th>
+                    @Html.DisplayNameFor(model => model.DisplayTotalIncome)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionIncome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayDateIncomes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InterestRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OtherJob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OtherIncome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalIncome)
+            </td>
+            <td>
+                @Html.ActionLink( "Edit", "EditIncome", new { Incomeid = item.IncomeId }, null) |
+                @Html.ActionLink("Details", "Details", new { id = item.IncomeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IncomeId })
+            </td>
+        </tr>
+            }
+
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Add new Incomes", "Create", null, new { @class="btn btn-defaul"})
+    </div>
+    </div>
