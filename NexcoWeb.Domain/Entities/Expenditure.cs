@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace NexcoWeb.Domain.Entities
         public int? Loan { get; set; }
         public int? OtherExpenses { get; set; }
         public string DescriptionExpenditure { get; set; }
+        [Required(ErrorMessage = "Period is required")]
         public DateTime ExpensesAddedOn { get; set; }
         public int? TotalExpense
         {
@@ -56,7 +58,7 @@ namespace NexcoWeb.Domain.Entities
         {
             get
             {
-                return $"Date: {ExpensesAddedOn:Y} ";
+                return $"{ExpensesAddedOn:Y} ";
             }
         }
 

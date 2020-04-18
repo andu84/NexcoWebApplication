@@ -1,8 +1,13 @@
 ﻿@model NexcoWeb.Domain.Entities.Budget
 
-    <div class="well">
+<div class="well">
+    <h3>
+        <span class="lead">@Model.DescriptionBudget</span>
+    </h3>
+    <strong>@Model.DisplayTextBudget </strong>
 
-        <strong>@Model.DisplayTextBudget </strong>
-        <span></span>
+    <span class="pull-right">
+        @Html.ActionLink("Details", "../AdminBudget/IndexBudget", null, new { @class = "btn btn-info" })
+    </span>
 
-    </div>
+</div>

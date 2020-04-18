@@ -232,6 +232,11 @@
     <Content Include="Views\Admin\EditIncome.cshtml" />
     <Content Include="Views\AdminExpenditure\IndexExpenditure.cshtml" />
     <Content Include="Views\AdminBudget\IndexBudget.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\AdminBudget\Create.cshtml" />
+    <Content Include="Views\AdminBudget\EditBudget.cshtml" />
+    <Content Include="Views\AdminExpenditure\Create.cshtml" />
+    <Content Include="Views\AdminExpenditure\EditExpenditure.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

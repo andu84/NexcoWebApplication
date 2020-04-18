@@ -2,13 +2,32 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />   
+    <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <div class="navbar navbar-inverse" role="navigation">
+        <a class="navbar-brand" href="~/budget/List"> Nexco Financial Management App</a>
+        <div class="buttons pull-right">
+        @Html.ActionLink("Budget", "List", "Budget", null,
+         new { @class = "btn btn-info btn-sm " })
+
+
+        @Html.ActionLink("Income", "List", "Income", null,
+        new { @class = "btn btn-info btn-sm" })
+
+        @Html.ActionLink("Expenses", "List", "Expenditure", null,
+        new { @class = "btn btn-info btn-sm" })
+        </div>
+    </div>
     <div>
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-succes">@TempData["message"]</div>
+        }
         @RenderBody()
     </div>
 </body>

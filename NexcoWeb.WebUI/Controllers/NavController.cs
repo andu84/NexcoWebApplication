@@ -25,5 +25,14 @@ namespace NexcoWeb.WebUI.Controllers
                 .OrderBy(x => x);
             return PartialView(descriptions) ;
         }
+        public PartialViewResult MainMenu(string description = null)
+        {
+            ViewBag.SelectedDescription = description;
+            IEnumerable<string> descriptions = repository.Budgets
+                .Select(x => x.DescriptionBudget)
+                .Distinct()
+                .OrderBy(x => x);
+            return PartialView(descriptions);
+        }
     }
 }

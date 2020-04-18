@@ -1,45 +1,26 @@
 ﻿@model NexcoWeb.Domain.Entities.Income
 
 @{
-    ViewBag.Title = "Edit Income";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<div class="col-md-offset-2 col-md-10">
-<h2>Edit Incomes</h2>
-</div>
-@using (Html.BeginForm())
+
+    <div class="col-md-offset-2 col-md-10">
+        <h2>Add Incomes</h2>
+    </div>
+
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
+        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.IncomeId)
-
         <div class="form-group">
-            <div class="control-label col-md-2">
-                <b>Description Income</b>
-            </div>
-            <div class="col-md-2">
-                @Html.EditorFor(model => model.DescriptionIncome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DescriptionIncome, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="control-label col-md-2">
-                <b>Date</b>
-            </div>
-            <div class="col-md-2">
-                @Html.EditorFor(model => model.IncomeAddedOn, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IncomeAddedOn, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="control-label col-md-2">
+            <div class="control-label  col-md-2">
                 <b>Salary</b>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-10">
                 @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
             </div>
@@ -47,9 +28,9 @@
 
         <div class="form-group">
             <div class="control-label col-md-2">
-                <b>Interest rate</b>
+                <b>Interest Rate</b>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-10">
                 @Html.EditorFor(model => model.InterestRate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.InterestRate, "", new { @class = "text-danger" })
             </div>
@@ -57,9 +38,9 @@
 
         <div class="form-group">
             <div class="control-label col-md-2">
-                <b>Other Jobs</b>
+                <b>Other Job</b>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-10">
                 @Html.EditorFor(model => model.OtherJob, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.OtherJob, "", new { @class = "text-danger" })
             </div>
@@ -69,7 +50,7 @@
             <div class="control-label col-md-2">
                 <b>Other Income</b>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-10">
                 @Html.EditorFor(model => model.OtherIncome, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.OtherIncome, "", new { @class = "text-danger" })
             </div>
@@ -77,20 +58,33 @@
 
         <div class="form-group">
             <div class="control-label col-md-2">
-                <b>Total Income</b>
+                <b>Description income</b>
             </div>
-            <div class="col-md-2">
-                @Html.EditorFor(model => model.TotalIncome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TotalIncome, "", new { @class = "text-danger" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DescriptionIncome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DescriptionIncome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                <b>Added On</b>
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IncomeAddedOn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IncomeAddedOn, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-info" />
-                @Html.ActionLink("Cancel", "IndexIncome", null, new { @class = "btn btn-info" })
+                <input type="submit" value="Create" class="btn btn-info" />
+                @Html.ActionLink("Cancel", "../Income/List", null, new { @class = "btn btn-info" })
             </div>
         </div>
     </div>
 }
 
+<div>
+    
+</div>

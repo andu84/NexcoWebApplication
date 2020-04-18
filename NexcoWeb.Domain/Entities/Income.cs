@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,29 +21,25 @@ namespace NexcoWeb.Domain.Entities
         public int? OtherIncome { get; set; }
         public string DescriptionIncome { get; set; }
         public DateTime IncomeAddedOn { get; set; }
-       
-
-
+        [Required(ErrorMessage = "Period is required")]
         public int? TotalIncome
         {
             get
             {
-
                 return Salary + InterestRate + OtherJob + OtherIncome;
             }
-            set
-            {
-
-            }
-
+            set { }
         }
+       
+
+        
 
         public string DisplayTextIncomes
         {
             get
             {
 
-                return $"The total Income is {TotalIncome}";
+                return $"The total Income is {Salary + InterestRate + OtherJob + OtherIncome}";
             }
 
         }
@@ -59,7 +56,7 @@ namespace NexcoWeb.Domain.Entities
         {
             get
             {
-                return $"Date: {IncomeAddedOn:Y} ";
+                return $"{IncomeAddedOn:Y} ";
             }
         }
 

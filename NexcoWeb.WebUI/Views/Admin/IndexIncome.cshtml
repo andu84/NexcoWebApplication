@@ -1,84 +1,96 @@
 ﻿@model IEnumerable<NexcoWeb.Domain.Entities.Income>
 
+
 @{
-    ViewBag.Title = "IndexIncome";
+    ViewBag.Title = "Income Details";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>IndexIncome</h2>
+<div class="row panel panel-default">
+    <div id="categoris" class="col-lg-3">
+        @Html.Action("Menu", "Nav")
+    </div>
+    <div class="panel-heading col-lg-9">
 
-<p>
-   
-</p>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div>All Incomes</div>
-    </div>
-    <div class="panel-body">
-        <table class="table table-striped table-condesed table-bordered">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.DescriptionIncome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DisplayDateIncomes)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Salary)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.InterestRate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OtherJob)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OtherIncome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TotalIncome)
-                </th>             
-                <th>
-                    @Html.DisplayNameFor(model => model.DisplayTotalIncome)
-                </th>
-                <th></th>
-            </tr>
+        <div class="panel-body">
+            <h2>Income Details</h2>
+            <table class="table table-striped table-condesed table-bordered">
+                <tr>
+                    <th>
+                        <b>Description Income</b>
+                    </th>
+                    <th>
+                        <b>Date</b>
+                    </th>
+                    <th>
+                        <b>Salary</b>
+                    </th>
+                    <th>
+                        <b>Interest Rate</b>
+                    </th>
+                    <th>
+                        <b>Other Jobs</b>
+                    </th>
+                    <th>
+                        <b>Other Income</b>
+                    </th>
+                    <th>
+                        <b>Total Income</b>
+                    </th>
+                    <th>
 
-            @foreach (var item in Model)
-            {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescriptionIncome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DisplayDateIncomes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Salary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InterestRate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OtherJob)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OtherIncome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalIncome)
-            </td>
-            <td>
-                @Html.ActionLink( "Edit", "EditIncome", new { Incomeid = item.IncomeId }, null) |
-                @Html.ActionLink("Details", "Details", new { id = item.IncomeId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IncomeId })
-            </td>
-        </tr>
-            }
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
 
-        </table>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DescriptionIncome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DisplayDateIncomes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Salary)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InterestRate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OtherJob)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OtherIncome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DisplayTotalIncome)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditIncome", new { incomeId = item.IncomeId, @class = "btn btn-info btn-xs" })
+                         </td>
+                        <td>
+                            @using (Html.BeginForm("DeleteIncome", "Admin"))
+                            {
+                                @Html.Hidden("IncomeId", item.IncomeId)
+                                <input type="submit" class="btn btn-info btn-xs"
+                                       value="Delete" />
+                            }
+                            @*@Html.ActionLink("Delete", "DeleteIncome", new { Incomeid = item.IncomeId }, null)*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            <div class="panel-footer">
+                @Html.ActionLink("Add new Incomes", "Create", null, new { @class = "btn btn-info" })
+            </div>
+        </div>
     </div>
-    <div class="panel-footer">
-        @Html.ActionLink("Add new Incomes", "Create", null, new { @class="btn btn-defaul"})
-    </div>
-    </div>
+    <hr />
+    <footer>
+        <p class="text-center">&copy; @DateTime.Now.Year - Nexco Financial Management Application</p>
+    </footer>
+</div>

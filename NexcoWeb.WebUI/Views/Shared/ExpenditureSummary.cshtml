@@ -3,7 +3,9 @@
 <div class="well">
     <h3>
         <strong> @Model.DisplayDateExpenses </strong>
-        <span class="pull-right label label-primary">Edit</span>
+        <span class="pull-right ">
+            @Html.ActionLink("Details", "../AdminExpenditure/IndexExpenditure", null, new { @class = "btn btn-info" })
+        </span>
     </h3>
     <span class="lead">@Model.DisplayTextExpenses</span>
 </div>

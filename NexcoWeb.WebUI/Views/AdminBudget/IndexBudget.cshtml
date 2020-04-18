@@ -1,31 +1,39 @@
-﻿@model IEnumerable<NexcoWeb.Domain.Entities.Budget>
+﻿
+@model IEnumerable<NexcoWeb.Domain.Entities.Budget>
 
 @{
     ViewBag.Title = "IndexBudget";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>IndexBudget</h2>
-
-
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div>All Budgets</div>
+<div class="row panel panel-default">
+    <div id="categoris" class="col-lg-3">
+        @Html.Action("Menu", "Nav")
     </div>
-    <div class="panel-body">
-        
+    <div class="panel-heading col-lg-9">
+        <div class="panel-body">
+            <h2>Budget details</h2>
             <table class="table table-striped table-condesed table-bordered">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.DescriptionBudget)
+                        <b>Total Expenses</b>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.TotalBudget)
+                        <b>Description budget</b>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.DisplayTextBudget)
+                        <b>total Income</b>
                     </th>
+                    <th>
+                        <b>Total expenses</b>
+                    </th>
+                    <th>
+                        <b>Total budget</b>
+                    </th>
+                    <th>
+                       <b>Avaible Budget</b>
+                    </th>
+                    <th></th>
                     <th></th>
                 </tr>
 
@@ -33,7 +41,16 @@
                 {
                     <tr>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Expenditure.TotalExpense)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.DescriptionBudget)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalIncome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalExpense)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.TotalBudget)
@@ -42,16 +59,29 @@
                             @Html.DisplayFor(modelItem => item.DisplayTextBudget)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.BudgetId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.BudgetId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.BudgetId })
+                            @Html.ActionLink("Edit", "EditBudget", new { Budgetid = item.BudgetId, @class="btn btn-info btn-xs" })
+                        </td>
+                        <td>
+                            @using (Html.BeginForm("DeleteBudget", "AdminBudget"))
+                            {
+                                @Html.Hidden("BudgetId", item.BudgetId)
+                                <input type="submit" class="btn btn-info btn-xs"
+                                       value="Delete" />
+                            }
+      
                         </td>
                     </tr>
                 }
             </table>
+            <div class="panel-footer">
+                @Html.ActionLink("Add new Expenditure", "Create", null, new { @class = "btn btn-defaul" })
+                @Html.ActionLink("Add new Incomes", "Create", null, new { @class = "btn btn-defaul" })
+            </div>
+        </div>
     </div>
-    <div class="panel-footer">
-        @Html.ActionLink("Add new Expenditure", "Create", null, new { @class = "btn btn-defaul" })
-        @Html.ActionLink("Add new Incomes", "Create", null, new { @class = "btn btn-defaul" })
-    </div>
+    <hr />
+    <footer>
+        <p class="text-center">&copy; @DateTime.Now.Year - Nexco Financial Management Application</p>
+    </footer>
+
 </div>

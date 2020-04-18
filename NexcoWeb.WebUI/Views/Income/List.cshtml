@@ -5,10 +5,14 @@
     ViewBag.Title = "Incomes";
 }
 
+
+
 @foreach (var i in Model.Incomes)
 {
     @Html.Partial("IncomeSummary", i)
 }
-    <div class="btn-group pull-right">
-        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
-    </div>
+
+@Html.ActionLink("Create new Incomes", "../Admin/Create", null, new { @class = "btn btn-info pull-left" })
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
+</div>

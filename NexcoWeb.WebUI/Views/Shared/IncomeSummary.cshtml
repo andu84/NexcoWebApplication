@@ -1,10 +1,13 @@
 ﻿@model NexcoWeb.Domain.Entities.Income
 
-<div class="well">
-    <h3>
-        <strong> @Model.DisplayDateIncomes </strong>
-        <span class="pull-right label label-primary">Edit</span>
-    </h3>
-    <span class="lead">@Model.DisplayTextIncomes</span>
-</div>
+    <div class="well">
+        <h3>
+            <strong> @Model.DisplayDateIncomes </strong>
+            <span class="pull-right">
+                @Html.ActionLink("Details", "../Admin/IndexIncome",null, new { @class = "btn btn-info" })
+            </span>
+        </h3>
+
+        <span class="lead">@Model.DisplayTextIncomes</span>
+    </div>
 

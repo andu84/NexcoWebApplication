@@ -1,4 +1,5 @@
 ﻿using NexcoWeb.Domain.Abstract;
+using NexcoWeb.Domain.Entities;
 using NexcoWeb.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace NexcoWeb.WebUI.Controllers
 {
+    
     public class ExpenditureController : Controller
     {
         private readonly IExpenditureRepository repository;
@@ -24,7 +26,7 @@ namespace NexcoWeb.WebUI.Controllers
             {
                 Expenditures = repository.Expenditures
                     .Where(p => description == null || p.DescriptionExpenditure == description)
-                    .OrderBy(p => p.ExpenditureId)
+                    .OrderByDescending(p => p.ExpensesAddedOn)
                     .Skip((page - 1) * PageSize)
                     .Take(PageSize),
                 PagingInfo = new PagingInfo
@@ -37,6 +39,10 @@ namespace NexcoWeb.WebUI.Controllers
             };
             return View(model);
         }
+
+
+
+        
     }
 }
 
