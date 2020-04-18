@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace NexcoWeb.Domain.Entities
 {
     public class Expenditure
     {
-        public Budget Budget{ get; set; }
+        public Budget Budget { get; set; }
         public Expenditure()
         {
             Budgets = new List<Budget>();
@@ -23,12 +21,13 @@ namespace NexcoWeb.Domain.Entities
         public int? Loan { get; set; }
         public int? OtherExpenses { get; set; }
         public string DescriptionExpenditure { get; set; }
+        [Required(ErrorMessage = "Period is required")]
         public DateTime ExpensesAddedOn { get; set; }
         public int? TotalExpense
         {
             get
             {
-               return TotalExpense = Travel + Entertaiment + Food + Auto + HouseholdExpenses + Clothing + Loan + OtherExpenses;             
+                return TotalExpense = Travel + Entertaiment + Food + Auto + HouseholdExpenses + Clothing + Loan + OtherExpenses;
 
             }
             set
@@ -56,7 +55,7 @@ namespace NexcoWeb.Domain.Entities
         {
             get
             {
-                return $"Date: {ExpensesAddedOn:Y} ";
+                return $"{ExpensesAddedOn:Y} ";
             }
         }
 

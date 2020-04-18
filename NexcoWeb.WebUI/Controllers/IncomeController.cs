@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace NexcoWeb.WebUI.Controllers
 {
+    
     public class IncomeController : Controller
     {
         private readonly IIncomeRepository repository;
@@ -14,15 +15,15 @@ namespace NexcoWeb.WebUI.Controllers
         {
             repository = repo;
         }
-        public ViewResult List(string description, int page = 1) 
-        { 
-           IncomesListViewModel model = new IncomesListViewModel
-           { 
-            Incomes = repository.Incomes
-                    .Where(p => description == null || p.DescriptionIncome == description)
-                    .OrderBy(p => p.IncomeId)
-                    .Skip((page - 1) * PageSize)
-                    .Take(PageSize),
+        public ViewResult List(string description, int page = 1)
+        {
+            IncomesListViewModel model = new IncomesListViewModel
+            {
+                Incomes = repository.Incomes
+                     .Where(p => description == null || p.DescriptionIncome == description)
+                     .OrderByDescending(p => p.IncomeAddedOn)
+                     .Skip((page - 1) * PageSize)
+                     .Take(PageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
@@ -30,8 +31,9 @@ namespace NexcoWeb.WebUI.Controllers
                     Total = repository.Incomes.Count()
                 },
                 CurrentDescription = description
-           };
+            };
             return View(model);
         }
+
     }
 }

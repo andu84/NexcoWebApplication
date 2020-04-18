@@ -3,10 +3,9 @@ using NexcoWeb.WebUI.Models;
 using System.Linq;
 using System.Web.Mvc;
 
-
-
 namespace NexcoWeb.WebUI.Controllers
 {
+    
     public class BudgetController : Controller
     {
         private readonly IBudgetRepository repository;
@@ -22,7 +21,7 @@ namespace NexcoWeb.WebUI.Controllers
             {
                 Budgets = repository.Budgets
                 .Where(p => description == null || p.DescriptionBudget == description)
-                .OrderBy(p => p.BudgetId)
+                .OrderByDescending(p => p.BudgetId)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize),
                 PagingInfo = new PagingInfo
@@ -35,7 +34,8 @@ namespace NexcoWeb.WebUI.Controllers
             };
             return View(model);
         }
+
     }
-}   
+}
 
 

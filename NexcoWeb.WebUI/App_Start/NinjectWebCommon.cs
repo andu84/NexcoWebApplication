@@ -3,27 +3,23 @@
 
 namespace NexcoWeb.WebUI.App_Start
 {
-    using System;
-    using System.Web;
-
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-    using Moq;
+    using NexcoWeb.Domain.Abstract;
+    using NexcoWeb.Domain.Concrete;
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
-    using NexcoWeb.Domain.Abstract;
-    using System.Collections.Generic;
-    using NexcoWeb.Domain.Entities;
-    using NexcoWeb.Domain.Concrete;
+    using System;
+    using System.Web;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application.
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
@@ -65,7 +61,7 @@ namespace NexcoWeb.WebUI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-           
+
             kernel.Bind<IIncomeRepository>().To<EFIncomeRepository>();
             kernel.Bind<IExpenditureRepository>().To<EFExpenditureRepository>();
             kernel.Bind<IBudgetRepository>().To<EFBudgetRepository>();
