@@ -31,7 +31,7 @@
                         <b>Total budget</b>
                     </th>
                     <th>
-                       <b>Avaible Budget</b>
+                        <b>Avaible Budget</b>
                     </th>
                     <th></th>
                     <th></th>
@@ -59,7 +59,9 @@
                             @Html.DisplayFor(modelItem => item.DisplayTextBudget)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "EditBudget", new { Budgetid = item.BudgetId, @class="btn btn-info btn-xs" })
+                            <div class="btn btn-info btn-xs">
+                                @Html.ActionLink("Edit", "EditBudget", new { Budgetid = item.BudgetId })
+                            </div>
                         </td>
                         <td>
                             @using (Html.BeginForm("DeleteBudget", "AdminBudget"))
@@ -68,7 +70,7 @@
                                 <input type="submit" class="btn btn-info btn-xs"
                                        value="Delete" />
                             }
-      
+
                         </td>
                     </tr>
                 }

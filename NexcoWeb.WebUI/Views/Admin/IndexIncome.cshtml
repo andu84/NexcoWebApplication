@@ -69,8 +69,10 @@
                             @Html.DisplayFor(modelItem => item.DisplayTotalIncome)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "EditIncome", new { incomeId = item.IncomeId, @class = "btn btn-info btn-xs" })
-                         </td>
+                            <div class="btn btn-info btn-xs">
+                                @Html.ActionLink("Edit", "EditIncome", new { incomeId = item.IncomeId })
+                            </div>
+                        </td>
                         <td>
                             @using (Html.BeginForm("DeleteIncome", "Admin"))
                             {

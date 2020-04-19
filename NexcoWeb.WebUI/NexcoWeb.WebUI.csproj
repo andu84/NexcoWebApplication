@@ -237,6 +237,7 @@
     <Content Include="Views\AdminBudget\EditBudget.cshtml" />
     <Content Include="Views\AdminExpenditure\Create.cshtml" />
     <Content Include="Views\AdminExpenditure\EditExpenditure.cshtml" />
+    <Content Include="Views\Nav\MainMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

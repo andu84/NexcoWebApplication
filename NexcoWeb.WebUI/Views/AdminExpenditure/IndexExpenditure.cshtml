@@ -91,7 +91,9 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink("Edit", "EditExpenditure", new { ExpenditureId = item.ExpenditureId, @class = "btn btn-info btn-xs" })     
+                    <div class="btn btn-info btn-xs">
+                        @Html.ActionLink("Edit", "EditExpenditure", new { ExpenditureId = item.ExpenditureId })
+                    </div>
                     </td>
                 <td>
                     @using (Html.BeginForm("DeleteExpenditure", "AdminExpenditure"))
