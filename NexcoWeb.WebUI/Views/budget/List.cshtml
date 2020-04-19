@@ -5,17 +5,22 @@
     ViewBag.Title = "Budgets";
 }
 
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-danger">@TempData["message"]</div>
+}
+
 @foreach (var i in Model.Budgets)
 {
     @Html.Partial("BudgetSummary", i)
 }
-    <div class="panel-footer">
-        @Html.ActionLink("Create new Incomes", "../Admin/Create", null, new { @class = "btn btn-info " })
-        @Html.ActionLink("Create new Expenses", "../AdminExpenditure/Create", null, new { @class = "btn btn-info" })
-        <div class="btn-group pull-right">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
-        </div>
+<div class="panel-footer">
+    @Html.ActionLink("Create new Incomes", "../Admin/Create", null, new { @class = "btn btn-info " })
+    @Html.ActionLink("Create new Expenses", "../AdminExpenditure/Create", null, new { @class = "btn btn-info" })
+    <div class="btn-group pull-right">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
     </div>
+</div>
 
 
 

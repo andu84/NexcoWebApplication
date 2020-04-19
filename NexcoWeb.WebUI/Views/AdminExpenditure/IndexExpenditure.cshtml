@@ -14,6 +14,10 @@
     <div class="panel-heading panel-heading col-lg-9">    
         <div class="panel-body">
             <h2>Expenses Details</h2>
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-danger">@TempData["message"]</div>
+            }
             <table class="table table-striped table-condesed table-bordered">
                 <tr>
                     <th>
@@ -55,61 +59,61 @@
 
                 @foreach (var item in Model)
                 {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DescriptionExpenditure)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DisplayDateExpenses)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Travel)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Food)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Entertaiment)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Auto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HouseholdExpenses)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Clothing)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Loan)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OtherExpenses)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DisplayTotalExpenses)
-                </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DescriptionExpenditure)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DisplayDateExpenses)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Travel)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Food)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Entertaiment)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Auto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HouseholdExpenses)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Clothing)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Loan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OtherExpenses)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DisplayTotalExpenses)
+                        </td>
 
-                <td>
-                    <div class="btn btn-info btn-xs">
-                        @Html.ActionLink("Edit", "EditExpenditure", new { ExpenditureId = item.ExpenditureId })
-                    </div>
-                    </td>
-                <td>
-                    @using (Html.BeginForm("DeleteExpenditure", "AdminExpenditure"))
-                    {
-                        @Html.Hidden("ExpenditureId", item.ExpenditureId)
-                        <input type="submit" class="btn btn-info btn-xs"
-                               value="Delete" />
-                    }
-                </td>
-            </tr>
+                        <td>
+                            <div class="btn btn-info btn-xs">
+                                @Html.ActionLink("Edit", "EditExpenditure", new { ExpenditureId = item.ExpenditureId })
+                            </div>
+                        </td>
+                        <td>
+                            @using (Html.BeginForm("DeleteExpenditure", "AdminExpenditure"))
+                            {
+                                @Html.Hidden("ExpenditureId", item.ExpenditureId)
+                                <input type="submit" class="btn btn-info btn-xs"
+                                       value="Delete" />
+                            }
+                        </td>
+                    </tr>
                 }
             </table>
             <div class="panel-footer">
-                 @Html.ActionLink("Add new Expenditure", "Create", null, new { @class = "btn btn-info " })
+                @Html.ActionLink("Add new Expenditure", "Create", null, new { @class = "btn btn-info " })
             </div>
-         </div>
+        </div>
      </div>
 <hr />
 <footer>

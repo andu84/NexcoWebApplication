@@ -22,7 +22,7 @@ namespace NexcoWeb.WebUI.Controllers
         }
         public ActionResult IndexIncome()
         {
-            return View(repositoryIncome.Incomes);
+            return View(repositoryIncome.Incomes.OrderByDescending(p => p.IncomeAddedOn));
         }
 
         public ViewResult Create()

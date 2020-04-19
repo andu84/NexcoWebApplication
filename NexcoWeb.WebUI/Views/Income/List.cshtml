@@ -6,7 +6,10 @@
 }
 
 
-
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-danger">@TempData["message"]</div>
+}
 @foreach (var i in Model.Incomes)
 {
     @Html.Partial("IncomeSummary", i)

@@ -23,7 +23,7 @@ namespace NexcoWeb.WebUI.Controllers
         public ActionResult IndexExpenditure()
         {
 
-            return View(repositoryExpenditure.Expenditures);
+            return View(repositoryExpenditure.Expenditures.OrderByDescending(p => p.ExpensesAddedOn));
         }
 
         public ViewResult Create()
@@ -36,7 +36,7 @@ namespace NexcoWeb.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 repositoryExpenditure.SaveExpenditure(expenditure);
-                TempData["message"] = string.Format("{0} has been saved",
+                TempData["message"] = string.Format("{0} has been added",
                     expenditure.DescriptionExpenditure);
                 return RedirectToAction("../Expenditure/List");
             }

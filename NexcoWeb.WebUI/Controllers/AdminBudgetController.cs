@@ -28,7 +28,7 @@ namespace NexcoWeb.WebUI.Controllers
         public ActionResult IndexBudget()
         {
             
-            return View(repositoryBudget.Budgets);
+            return View(repositoryBudget.Budgets.OrderByDescending(p => p.BudgetId));
         }
 
         public ViewResult Create()
@@ -54,6 +54,7 @@ namespace NexcoWeb.WebUI.Controllers
         public ViewResult EditBudget(int BudgetId)
         {
             Budget budget = repositoryBudget.Budgets.FirstOrDefault
+                
                 (p => p.BudgetId == BudgetId);
             return View(budget);
         }
