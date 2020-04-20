@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -13,6 +13,8 @@
                     {
                         BudgetId = c.Int(nullable: false, identity: true),
                         DescriptionBudget = c.String(),
+                        TotalIncome = c.Int(),
+                        TotalExpense = c.Int(),
                         TotalBudget = c.Int(),
                         Expenditure_ExpenditureId = c.Int(),
                         Expenditure_ExpenditureId1 = c.Int(),
@@ -35,6 +37,7 @@
                     {
                         ExpenditureId = c.Int(nullable: false, identity: true),
                         Travel = c.Int(),
+                        Food = c.Int(),
                         Entertaiment = c.Int(),
                         Auto = c.Int(),
                         HouseholdExpenses = c.Int(),
@@ -45,10 +48,13 @@
                         ExpensesAddedOn = c.DateTime(nullable: false),
                         TotalExpense = c.Int(),
                         Budget_BudgetId = c.Int(),
+                        Budget_BudgetId1 = c.Int(),
                     })
                 .PrimaryKey(t => t.ExpenditureId)
                 .ForeignKey("dbo.Budgets", t => t.Budget_BudgetId)
-                .Index(t => t.Budget_BudgetId);
+                .ForeignKey("dbo.Budgets", t => t.Budget_BudgetId1)
+                .Index(t => t.Budget_BudgetId)
+                .Index(t => t.Budget_BudgetId1);
             
             CreateTable(
                 "dbo.Incomes",
@@ -61,29 +67,46 @@
                         OtherIncome = c.Int(),
                         DescriptionIncome = c.String(),
                         IncomeAddedOn = c.DateTime(nullable: false),
-                        TotalIncome = c.Int(),
+                        TotalIncome = c.Int(nullable: false),
                         Budget_BudgetId = c.Int(),
+                        Budget_BudgetId1 = c.Int(),
                     })
                 .PrimaryKey(t => t.IncomeId)
                 .ForeignKey("dbo.Budgets", t => t.Budget_BudgetId)
-                .Index(t => t.Budget_BudgetId);
+                .ForeignKey("dbo.Budgets", t => t.Budget_BudgetId1)
+                .Index(t => t.Budget_BudgetId)
+                .Index(t => t.Budget_BudgetId1);
+            
+            CreateTable(
+                "dbo.Users",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        Password = c.String(),
+                    })
+                .PrimaryKey(t => t.UserId);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Incomes", "Budget_BudgetId1", "dbo.Budgets");
             DropForeignKey("dbo.Budgets", "Income_IncomeId1", "dbo.Incomes");
             DropForeignKey("dbo.Budgets", "Income_IncomeId", "dbo.Incomes");
             DropForeignKey("dbo.Incomes", "Budget_BudgetId", "dbo.Budgets");
+            DropForeignKey("dbo.Expenditures", "Budget_BudgetId1", "dbo.Budgets");
             DropForeignKey("dbo.Budgets", "Expenditure_ExpenditureId1", "dbo.Expenditures");
             DropForeignKey("dbo.Budgets", "Expenditure_ExpenditureId", "dbo.Expenditures");
             DropForeignKey("dbo.Expenditures", "Budget_BudgetId", "dbo.Budgets");
+            DropIndex("dbo.Incomes", new[] { "Budget_BudgetId1" });
             DropIndex("dbo.Incomes", new[] { "Budget_BudgetId" });
+            DropIndex("dbo.Expenditures", new[] { "Budget_BudgetId1" });
             DropIndex("dbo.Expenditures", new[] { "Budget_BudgetId" });
             DropIndex("dbo.Budgets", new[] { "Income_IncomeId1" });
             DropIndex("dbo.Budgets", new[] { "Income_IncomeId" });
             DropIndex("dbo.Budgets", new[] { "Expenditure_ExpenditureId1" });
             DropIndex("dbo.Budgets", new[] { "Expenditure_ExpenditureId" });
+            DropTable("dbo.Users");
             DropTable("dbo.Incomes");
             DropTable("dbo.Expenditures");
             DropTable("dbo.Budgets");

@@ -64,13 +64,9 @@
     <Compile Include="Entities\Expenditure.cs" />
     <Compile Include="Entities\Income.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Migrations\202004111701444_InitialCreate.cs" />
-    <Compile Include="Migrations\202004111701444_InitialCreate.designer.cs">
-      <DependentUpon>202004111701444_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004202115238_initial.cs" />
-    <Compile Include="Migrations\202004202115238_initial.designer.cs">
-      <DependentUpon>202004202115238_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202004202125186_initial.cs" />
+    <Compile Include="Migrations\202004202125186_initial.designer.cs">
+      <DependentUpon>202004202125186_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,11 +76,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004111701444_InitialCreate.resx">
-      <DependentUpon>202004111701444_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004202115238_initial.resx">
-      <DependentUpon>202004202115238_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004202125186_initial.resx">
+      <DependentUpon>202004202125186_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

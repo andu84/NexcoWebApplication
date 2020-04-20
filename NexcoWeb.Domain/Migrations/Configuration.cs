@@ -9,8 +9,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "NexcoWeb.Domain.Concrete.EFDbContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(NexcoWeb.Domain.Concrete.EFDbContext context)
