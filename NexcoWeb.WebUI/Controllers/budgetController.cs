@@ -25,7 +25,7 @@ namespace NexcoWeb.WebUI.Controllers
                 .Where(p => description == null || p.DescriptionBudget == description)
                 .OrderByDescending(p => p.BudgetId)
                 .Skip((page - 1) * PageSize)
-                .Take(PageSize),
+                .Take(PageSize),               
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
@@ -34,8 +34,10 @@ namespace NexcoWeb.WebUI.Controllers
                 },
                 CurrentDescription = description
             };
+
             return View(model);
         }
+
         
     }
 }   

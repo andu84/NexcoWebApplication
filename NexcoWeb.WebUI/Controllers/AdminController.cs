@@ -32,6 +32,7 @@ namespace NexcoWeb.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(Income income)
         {
+
             if (ModelState.IsValid)
             {
                 repositoryIncome.SaveIncome(income);

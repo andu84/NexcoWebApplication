@@ -12,19 +12,30 @@
     <div class="navbar navbar-inverse" role="navigation">
         <a class="navbar-brand" href="~/budget/List"> Nexco Financial Management App</a>
         <div class="buttons pull-right">
-        @Html.ActionLink("Budget", "List", "Budget", null,
-         new { @class = "btn btn-info btn-sm " })
+            @Html.ActionLink("Budget", "List", "Budget", null,
+             new { @class = "btn btn-info btn-sm " })
 
 
-        @Html.ActionLink("Income", "List", "Income", null,
-        new { @class = "btn btn-info btn-sm" })
+            @Html.ActionLink("Income", "List", "Income", null,
+            new { @class = "btn btn-info btn-sm" })
 
-        @Html.ActionLink("Expenses", "List", "Expenditure", null,
-        new { @class = "btn btn-info btn-sm" })
+            @Html.ActionLink("Expenses", "List", "Expenditure", null,
+            new { @class = "btn btn-info btn-sm" })
+            @{
+                var userName = HttpContext.Current.User.Identity.Name;
+                if (userName != "")
+                {
+
+                    <span class="btn-info btn btn-sm">
+                        @Html.ActionLink(HttpContext.Current.User.Identity.Name + " -Logout", "Logout", "Account")
+                    </span>
+                }
+            }
         </div>
     </div>
     <div>
-     
+       
+
         @RenderBody()
     </div>
 </body>

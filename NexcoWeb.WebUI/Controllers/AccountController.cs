@@ -43,8 +43,11 @@ namespace NexcoWeb.WebUI.Controllers
             {
                 return View();
             }
-           
         }
-            
+         public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("IndexBudget", "AdminBudget");
+        }
     }
 }
