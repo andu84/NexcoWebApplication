@@ -12,6 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace NexcoWeb.WebUI.Controllers
 {
+    [Authorize]
     
     public class AdminBudgetController : Controller
     {

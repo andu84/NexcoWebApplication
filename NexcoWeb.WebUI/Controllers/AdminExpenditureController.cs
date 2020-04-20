@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace NexcoWeb.WebUI.Controllers
 {
-    
+    [Authorize]
     public class AdminExpenditureController : Controller
     {
         private IExpenditureRepository repositoryExpenditure;

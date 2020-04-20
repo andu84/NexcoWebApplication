@@ -198,6 +198,7 @@
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminBudgetController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminExpenditureController.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Models\ExpendituresListViewModel.cs" />
     <Compile Include="Models\IncomeExpenditure.cs" />
     <Compile Include="Models\IncomesListViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -238,6 +240,7 @@
     <Content Include="Views\AdminExpenditure\Create.cshtml" />
     <Content Include="Views\AdminExpenditure\EditExpenditure.cshtml" />
     <Content Include="Views\Nav\MainMenu.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -13,5 +13,6 @@ namespace NexcoWeb.Domain.Concrete
         public DbSet<Income> Incomes { get; set; }
         public DbSet<Expenditure> Expenditures { get; set; }
         public DbSet<Budget> Budgets { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

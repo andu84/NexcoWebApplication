@@ -69,7 +69,7 @@ namespace NexcoWeb.WebUI.App_Start
             kernel.Bind<IIncomeRepository>().To<EFIncomeRepository>();
             kernel.Bind<IExpenditureRepository>().To<EFExpenditureRepository>();
             kernel.Bind<IBudgetRepository>().To<EFBudgetRepository>();
-
+            kernel.Bind<IAuthentication>().To<FormsAuthenticationProvider>();
         }
     }
 }
