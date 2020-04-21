@@ -205,6 +205,8 @@
     <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\ExpenditureController.cs" />
     <Compile Include="Controllers\IncomeController.cs" />
+    <Compile Include="Controllers\IncomeExpenditureController.cs" />
+    <Compile Include="Controllers\JoinTablesController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -241,6 +243,7 @@
     <Content Include="Views\AdminExpenditure\EditExpenditure.cshtml" />
     <Content Include="Views\Nav\MainMenu.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\IncomeExpenditure\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -250,6 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\JoinTables\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NexcoWeb.Domain\NexcoWeb.Domain.csproj">
