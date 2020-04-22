@@ -17,6 +17,7 @@ namespace NexcoWeb.Domain.Entities
         public Expenditure Expenditure { get; set; }
         public int? TotalIncome { get; set; }
         public int? TotalExpense { get; set; }
+        public DateTime BudgetAddedOn { get; set; }
         public List<Income> Incomes { get; set; }
         public List<Expenditure> Expenditures { get; set;}
 
