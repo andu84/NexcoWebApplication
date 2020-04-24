@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -15,6 +15,7 @@
                         DescriptionBudget = c.String(),
                         TotalIncome = c.Int(),
                         TotalExpense = c.Int(),
+                        BudgetAddedOn = c.DateTime(nullable: false),
                         TotalBudget = c.Int(),
                         Expenditure_ExpenditureId = c.Int(),
                         Expenditure_ExpenditureId1 = c.Int(),

@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexcoWeb.Domain", "NexcoWeb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexcoWeb.WebUI", "NexcoWeb.WebUI\NexcoWeb.WebUI.csproj", "{5C93F7B0-AE12-428F-89FE-B517BB10F5F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexcoDataManager", "NexcoDataManager\NexcoDataManager.csproj", "{48E84BBD-ABB0-4BA3-B672-7475B8116F8D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{5C93F7B0-AE12-428F-89FE-B517BB10F5F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C93F7B0-AE12-428F-89FE-B517BB10F5F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C93F7B0-AE12-428F-89FE-B517BB10F5F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{48E84BBD-ABB0-4BA3-B672-7475B8116F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48E84BBD-ABB0-4BA3-B672-7475B8116F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48E84BBD-ABB0-4BA3-B672-7475B8116F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48E84BBD-ABB0-4BA3-B672-7475B8116F8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,13 +11,13 @@ namespace NexcoWeb.WebUI
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "DefaultWebApi",
-                url: "api/{controller}/{id}",
-                defaults: new { id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "DefaultWebApi",
+            //    url: "api/{controller}/{id}",
+            //    defaults: new { id = UrlParameter.Optional }
+            //);
 
             routes.MapRoute(
                 name: "Default",
