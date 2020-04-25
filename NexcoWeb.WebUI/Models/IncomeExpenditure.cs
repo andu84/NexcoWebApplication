@@ -10,5 +10,6 @@ namespace NexcoWeb.WebUI.Models
     {
         public List<Income> IncomeList { get; set; }
         public List<Expenditure> ExpenditureList { get; set; }
+        public PagingInfo PagingInfo { get; set; }
     }
 }

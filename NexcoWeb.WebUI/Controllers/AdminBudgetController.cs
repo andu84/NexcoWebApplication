@@ -1,4 +1,5 @@
 ﻿using NexcoWeb.Domain.Abstract;
+using NexcoWeb.Domain.Concrete;
 using NexcoWeb.Domain.Entities;
 using Ninject;
 using System;
@@ -25,67 +26,35 @@ namespace NexcoWeb.WebUI.Controllers
 
         }
 
-        
+
         public ActionResult IndexBudget()
         {
-            
+
             return View(repositoryBudget.Budgets.OrderByDescending(p => p.BudgetId));
+
         }
 
-        public ViewResult Create()
-        {
-            return View(new Budget());
-        }
-        [HttpPost]
-        public ActionResult Create (Budget budget)
-        {
-            if (ModelState.IsValid)
-            {
-                repositoryBudget.SaveBudget(budget);
-                TempData["message"] = string.Format("{0} has been added",
-                    budget.DescriptionBudget);
-                return RedirectToAction("../Budget/List");
-            }
-            else
-            {
-                return View(budget);
-            }
-        }
 
-        public ViewResult EditBudget(int BudgetId)
+        public ActionResult DetailBudget()
         {
-            Budget budget = repositoryBudget.Budgets.FirstOrDefault
-                
-                (p => p.BudgetId == BudgetId);
-            return View(budget);
+            EFDbContext db = new EFDbContext();
+            List<Income> incomes = db.Incomes.ToList();
+            List<Expenditure> expenditures = db.Expenditures.ToList();
+            var query = from i in incomes
+                        join ex in expenditures on i.IncomeAddedOn equals ex.ExpensesAddedOn
+                        select new Budget { Income = i, Expenditure = ex };
+            var Allincomes = from i in incomes
+                             join ex in expenditures on i.IncomeAddedOn equals ex.ExpensesAddedOn
+                             select new { ex.TotalExpense, i.TotalIncome, i.IncomeId, i.IncomeAddedOn };
+            foreach (var item in Allincomes)
+                db.Budgets.Add(new Budget()
+                { TotalIncome = item.TotalIncome, TotalExpense = item.TotalExpense, BudgetAddedOn = item.IncomeAddedOn });
+            db.SaveChanges();
+            return View(query);
         }
+       
 
-        [HttpPost]
-        public ActionResult EditBudget(Budget budget)
-        {
-            if (ModelState.IsValid)
-            {
-                repositoryBudget.SaveBudget(budget);
-                TempData["message"] = string.Format("{0} has been saved",
-                    budget.DescriptionBudget);
-                return RedirectToAction("IndexBudget");
-            }
-            else
-            {
-                return View(budget);
-            }
-        }
-
-        [HttpPost]
-        public ActionResult DeleteBudget(int BudgetId)
-        {
-            Budget deletedBudget = repositoryBudget.DeleteBudget(BudgetId);
-            if (deletedBudget != null)
-            {
-                TempData["message"] = string.Format("{0} was deleted",
-                    deletedBudget.DescriptionBudget);
-            }
-            return RedirectToAction("IndexBudget");
-        }
+        
+        
     }
 }

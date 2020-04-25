@@ -4,6 +4,12 @@ using NexcoWeb.Domain.Entities;
 using System.Linq;
 using System.Web.Mvc;
 using System.Collections.Generic;
+using NexcoWeb.Domain.Concrete;
+using System;
+using System.Data;
+
+
+using System.Web;
 
 namespace NexcoWeb.WebUI.Controllers
 {

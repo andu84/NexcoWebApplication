@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NexcoAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Budgets">
+          <Key>
+            <PropertyRef Name="BudgetId" />
+          </Key>
+          <Property Name="BudgetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescriptionBudget" Type="nvarchar(max)" />
+          <Property Name="TotalIncome" Type="int" />
+          <Property Name="TotalExpense" Type="int" />
+          <Property Name="BudgetAddedOn" Type="date" Nullable="false" />
+          <Property Name="TotalBudget" Type="int" />
+          <Property Name="Expenditure_ExpenditureId" Type="int" />
+          <Property Name="Expenditure_ExpenditureId1" Type="int" />
+          <Property Name="Income_IncomeId" Type="int" />
+          <Property Name="Income_IncomeId1" Type="int" />
+        </EntityType>
+        <EntityType Name="Expenditures">
+          <Key>
+            <PropertyRef Name="ExpenditureId" />
+          </Key>
+          <Property Name="ExpenditureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Travel" Type="int" />
+          <Property Name="Food" Type="int" />
+          <Property Name="Entertaiment" Type="int" />
+          <Property Name="Auto" Type="int" />
+          <Property Name="HouseholdExpenses" Type="int" />
+          <Property Name="Clothing" Type="int" />
+          <Property Name="Loan" Type="int" />
+          <Property Name="OtherExpenses" Type="int" />
+          <Property Name="DescriptionExpenditure" Type="nvarchar(max)" />
+          <Property Name="ExpensesAddedOn" Type="date" Nullable="false" />
+          <Property Name="TotalExpense" Type="int" />
+          <Property Name="Budget_BudgetId" Type="int" />
+          <Property Name="Budget_BudgetId1" Type="int" />
+        </EntityType>
+        <EntityType Name="Incomes">
+          <Key>
+            <PropertyRef Name="IncomeId" />
+          </Key>
+          <Property Name="IncomeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Salary" Type="int" />
+          <Property Name="InterestRate" Type="int" />
+          <Property Name="OtherJob" Type="int" />
+          <Property Name="OtherIncome" Type="int" />
+          <Property Name="DescriptionIncome" Type="nvarchar(max)" />
+          <Property Name="IncomeAddedOn" Type="date" />
+          <Property Name="TotalIncome" Type="int" />
+          <Property Name="Budget_BudgetId" Type="int" />
+          <Property Name="Budget_BudgetId1" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId">
+          <End Role="Expenditures" Type="Self.Expenditures" Multiplicity="0..1" />
+          <End Role="Budgets" Type="Self.Budgets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expenditures">
+              <PropertyRef Name="ExpenditureId" />
+            </Principal>
+            <Dependent Role="Budgets">
+              <PropertyRef Name="Expenditure_ExpenditureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId1">
+          <End Role="Expenditures" Type="Self.Expenditures" Multiplicity="0..1" />
+          <End Role="Budgets" Type="Self.Budgets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expenditures">
+              <PropertyRef Name="ExpenditureId" />
+            </Principal>
+            <Dependent Role="Budgets">
+              <PropertyRef Name="Expenditure_ExpenditureId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Budgets_dbo_Incomes_Income_IncomeId">
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="0..1" />
+          <End Role="Budgets" Type="Self.Budgets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incomes">
+              <PropertyRef Name="IncomeId" />
+            </Principal>
+            <Dependent Role="Budgets">
+              <PropertyRef Name="Income_IncomeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Budgets_dbo_Incomes_Income_IncomeId1">
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="0..1" />
+          <End Role="Budgets" Type="Self.Budgets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incomes">
+              <PropertyRef Name="IncomeId" />
+            </Principal>
+            <Dependent Role="Budgets">
+              <PropertyRef Name="Income_IncomeId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId">
+          <End Role="Budgets" Type="Self.Budgets" Multiplicity="0..1" />
+          <End Role="Expenditures" Type="Self.Expenditures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budgets">
+              <PropertyRef Name="BudgetId" />
+            </Principal>
+            <Dependent Role="Expenditures">
+              <PropertyRef Name="Budget_BudgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId1">
+          <End Role="Budgets" Type="Self.Budgets" Multiplicity="0..1" />
+          <End Role="Expenditures" Type="Self.Expenditures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budgets">
+              <PropertyRef Name="BudgetId" />
+            </Principal>
+            <Dependent Role="Expenditures">
+              <PropertyRef Name="Budget_BudgetId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId">
+          <End Role="Budgets" Type="Self.Budgets" Multiplicity="0..1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budgets">
+              <PropertyRef Name="BudgetId" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="Budget_BudgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId1">
+          <End Role="Budgets" Type="Self.Budgets" Multiplicity="0..1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budgets">
+              <PropertyRef Name="BudgetId" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="Budget_BudgetId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NexcoAppModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Budgets" EntityType="Self.Budgets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expenditures" EntityType="Self.Expenditures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incomes" EntityType="Self.Incomes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId" Association="Self.FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId">
+            <End Role="Expenditures" EntitySet="Expenditures" />
+            <End Role="Budgets" EntitySet="Budgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId1" Association="Self.FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId1">
+            <End Role="Expenditures" EntitySet="Expenditures" />
+            <End Role="Budgets" EntitySet="Budgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Budgets_dbo_Incomes_Income_IncomeId" Association="Self.FK_dbo_Budgets_dbo_Incomes_Income_IncomeId">
+            <End Role="Incomes" EntitySet="Incomes" />
+            <End Role="Budgets" EntitySet="Budgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Budgets_dbo_Incomes_Income_IncomeId1" Association="Self.FK_dbo_Budgets_dbo_Incomes_Income_IncomeId1">
+            <End Role="Incomes" EntitySet="Incomes" />
+            <End Role="Budgets" EntitySet="Budgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId" Association="Self.FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId">
+            <End Role="Budgets" EntitySet="Budgets" />
+            <End Role="Expenditures" EntitySet="Expenditures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId1" Association="Self.FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId1">
+            <End Role="Budgets" EntitySet="Budgets" />
+            <End Role="Expenditures" EntitySet="Expenditures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId" Association="Self.FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId">
+            <End Role="Budgets" EntitySet="Budgets" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId1" Association="Self.FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId1">
+            <End Role="Budgets" EntitySet="Budgets" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NexcoAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Budget">
+          <Key>
+            <PropertyRef Name="BudgetId" />
+          </Key>
+          <Property Name="BudgetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptionBudget" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TotalIncome" Type="Int32" />
+          <Property Name="TotalExpense" Type="Int32" />
+          <Property Name="BudgetAddedOn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TotalBudget" Type="Int32" />
+          <Property Name="Expenditure_ExpenditureId" Type="Int32" />
+          <Property Name="Expenditure_ExpenditureId1" Type="Int32" />
+          <Property Name="Income_IncomeId" Type="Int32" />
+          <Property Name="Income_IncomeId1" Type="Int32" />
+          <NavigationProperty Name="Expenditure" Relationship="Self.FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId" FromRole="Budgets" ToRole="Expenditures" />
+          <NavigationProperty Name="Expenditure1" Relationship="Self.FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId1" FromRole="Budgets" ToRole="Expenditures" />
+          <NavigationProperty Name="Income" Relationship="Self.FK_dbo_Budgets_dbo_Incomes_Income_IncomeId" FromRole="Budgets" ToRole="Incomes" />
+          <NavigationProperty Name="Income1" Relationship="Self.FK_dbo_Budgets_dbo_Incomes_Income_IncomeId1" FromRole="Budgets" ToRole="Incomes" />
+          <NavigationProperty Name="Expenditures" Relationship="Self.FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId" FromRole="Budgets" ToRole="Expenditures" />
+          <NavigationProperty Name="Expenditures1" Relationship="Self.FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId1" FromRole="Budgets" ToRole="Expenditures" />
+          <NavigationProperty Name="Incomes" Relationship="Self.FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId" FromRole="Budgets" ToRole="Incomes" />
+          <NavigationProperty Name="Incomes1" Relationship="Self.FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId1" FromRole="Budgets" ToRole="Incomes" />
+        </EntityType>
+        <EntityType Name="Expenditure">
+          <Key>
+            <PropertyRef Name="ExpenditureId" />
+          </Key>
+          <Property Name="ExpenditureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Travel" Type="Int32" />
+          <Property Name="Food" Type="Int32" />
+          <Property Name="Entertaiment" Type="Int32" />
+          <Property Name="Auto" Type="Int32" />
+          <Property Name="HouseholdExpenses" Type="Int32" />
+          <Property Name="Clothing" Type="Int32" />
+          <Property Name="Loan" Type="Int32" />
+          <Property Name="OtherExpenses" Type="Int32" />
+          <Property Name="DescriptionExpenditure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExpensesAddedOn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TotalExpense" Type="Int32" />
+          <Property Name="Budget_BudgetId" Type="Int32" />
+          <Property Name="Budget_BudgetId1" Type="Int32" />
+          <NavigationProperty Name="Budgets" Relationship="Self.FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId" FromRole="Expenditures" ToRole="Budgets" />
+          <NavigationProperty Name="Budgets1" Relationship="Self.FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId1" FromRole="Expenditures" ToRole="Budgets" />
+          <NavigationProperty Name="Budget" Relationship="Self.FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId" FromRole="Expenditures" ToRole="Budgets" />
+          <NavigationProperty Name="Budget1" Relationship="Self.FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId1" FromRole="Expenditures" ToRole="Budgets" />
+        </EntityType>
+        <EntityType Name="Income">
+          <Key>
+            <PropertyRef Name="IncomeId" />
+          </Key>
+          <Property Name="IncomeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Salary" Type="Int32" />
+          <Property Name="InterestRate" Type="Int32" />
+          <Property Name="OtherJob" Type="Int32" />
+          <Property Name="OtherIncome" Type="Int32" />
+          <Property Name="DescriptionIncome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IncomeAddedOn" Type="DateTime" Precision="0" />
+          <Property Name="TotalIncome" Type="Int32" />
+          <Property Name="Budget_BudgetId" Type="Int32" />
+          <Property Name="Budget_BudgetId1" Type="Int32" />
+          <NavigationProperty Name="Budgets" Relationship="Self.FK_dbo_Budgets_dbo_Incomes_Income_IncomeId" FromRole="Incomes" ToRole="Budgets" />
+          <NavigationProperty Name="Budgets1" Relationship="Self.FK_dbo_Budgets_dbo_Incomes_Income_IncomeId1" FromRole="Incomes" ToRole="Budgets" />
+          <NavigationProperty Name="Budget" Relationship="Self.FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId" FromRole="Incomes" ToRole="Budgets" />
+          <NavigationProperty Name="Budget1" Relationship="Self.FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId1" FromRole="Incomes" ToRole="Budgets" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId">
+          <End Role="Expenditures" Type="Self.Expenditure" Multiplicity="0..1" />
+          <End Role="Budgets" Type="Self.Budget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expenditures">
+              <PropertyRef Name="ExpenditureId" />
+            </Principal>
+            <Dependent Role="Budgets">
+              <PropertyRef Name="Expenditure_ExpenditureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId1">
+          <End Role="Expenditures" Type="Self.Expenditure" Multiplicity="0..1" />
+          <End Role="Budgets" Type="Self.Budget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expenditures">
+              <PropertyRef Name="ExpenditureId" />
+            </Principal>
+            <Dependent Role="Budgets">
+              <PropertyRef Name="Expenditure_ExpenditureId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Budgets_dbo_Incomes_Income_IncomeId">
+          <End Role="Incomes" Type="Self.Income" Multiplicity="0..1" />
+          <End Role="Budgets" Type="Self.Budget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incomes">
+              <PropertyRef Name="IncomeId" />
+            </Principal>
+            <Dependent Role="Budgets">
+              <PropertyRef Name="Income_IncomeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Budgets_dbo_Incomes_Income_IncomeId1">
+          <End Role="Incomes" Type="Self.Income" Multiplicity="0..1" />
+          <End Role="Budgets" Type="Self.Budget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incomes">
+              <PropertyRef Name="IncomeId" />
+            </Principal>
+            <Dependent Role="Budgets">
+              <PropertyRef Name="Income_IncomeId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId">
+          <End Role="Budgets" Type="Self.Budget" Multiplicity="0..1" />
+          <End Role="Expenditures" Type="Self.Expenditure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budgets">
+              <PropertyRef Name="BudgetId" />
+            </Principal>
+            <Dependent Role="Expenditures">
+              <PropertyRef Name="Budget_BudgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId1">
+          <End Role="Budgets" Type="Self.Budget" Multiplicity="0..1" />
+          <End Role="Expenditures" Type="Self.Expenditure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budgets">
+              <PropertyRef Name="BudgetId" />
+            </Principal>
+            <Dependent Role="Expenditures">
+              <PropertyRef Name="Budget_BudgetId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId">
+          <End Role="Budgets" Type="Self.Budget" Multiplicity="0..1" />
+          <End Role="Incomes" Type="Self.Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budgets">
+              <PropertyRef Name="BudgetId" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="Budget_BudgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId1">
+          <End Role="Budgets" Type="Self.Budget" Multiplicity="0..1" />
+          <End Role="Incomes" Type="Self.Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budgets">
+              <PropertyRef Name="BudgetId" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="Budget_BudgetId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NexcoAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Budgets" EntityType="Self.Budget" />
+          <EntitySet Name="Expenditures" EntityType="Self.Expenditure" />
+          <EntitySet Name="Incomes" EntityType="Self.Income" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId" Association="Self.FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId">
+            <End Role="Expenditures" EntitySet="Expenditures" />
+            <End Role="Budgets" EntitySet="Budgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId1" Association="Self.FK_dbo_Budgets_dbo_Expenditures_Expenditure_ExpenditureId1">
+            <End Role="Expenditures" EntitySet="Expenditures" />
+            <End Role="Budgets" EntitySet="Budgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Budgets_dbo_Incomes_Income_IncomeId" Association="Self.FK_dbo_Budgets_dbo_Incomes_Income_IncomeId">
+            <End Role="Incomes" EntitySet="Incomes" />
+            <End Role="Budgets" EntitySet="Budgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Budgets_dbo_Incomes_Income_IncomeId1" Association="Self.FK_dbo_Budgets_dbo_Incomes_Income_IncomeId1">
+            <End Role="Incomes" EntitySet="Incomes" />
+            <End Role="Budgets" EntitySet="Budgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId" Association="Self.FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId">
+            <End Role="Budgets" EntitySet="Budgets" />
+            <End Role="Expenditures" EntitySet="Expenditures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId1" Association="Self.FK_dbo_Expenditures_dbo_Budgets_Budget_BudgetId1">
+            <End Role="Budgets" EntitySet="Budgets" />
+            <End Role="Expenditures" EntitySet="Expenditures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId" Association="Self.FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId">
+            <End Role="Budgets" EntitySet="Budgets" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId1" Association="Self.FK_dbo_Incomes_dbo_Budgets_Budget_BudgetId1">
+            <End Role="Budgets" EntitySet="Budgets" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NexcoAppModelStoreContainer" CdmEntityContainer="NexcoAppEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="NexcoAppModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Budgets">
+            <EntityTypeMapping TypeName="NexcoAppModel.Budget">
+              <MappingFragment StoreEntitySet="Budgets">
+                <ScalarProperty Name="BudgetId" ColumnName="BudgetId" />
+                <ScalarProperty Name="DescriptionBudget" ColumnName="DescriptionBudget" />
+                <ScalarProperty Name="TotalIncome" ColumnName="TotalIncome" />
+                <ScalarProperty Name="TotalExpense" ColumnName="TotalExpense" />
+                <ScalarProperty Name="BudgetAddedOn" ColumnName="BudgetAddedOn" />
+                <ScalarProperty Name="TotalBudget" ColumnName="TotalBudget" />
+                <ScalarProperty Name="Expenditure_ExpenditureId" ColumnName="Expenditure_ExpenditureId" />
+                <ScalarProperty Name="Expenditure_ExpenditureId1" ColumnName="Expenditure_ExpenditureId1" />
+                <ScalarProperty Name="Income_IncomeId" ColumnName="Income_IncomeId" />
+                <ScalarProperty Name="Income_IncomeId1" ColumnName="Income_IncomeId1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenditures">
+            <EntityTypeMapping TypeName="NexcoAppModel.Expenditure">
+              <MappingFragment StoreEntitySet="Expenditures">
+                <ScalarProperty Name="ExpenditureId" ColumnName="ExpenditureId" />
+                <ScalarProperty Name="Travel" ColumnName="Travel" />
+                <ScalarProperty Name="Food" ColumnName="Food" />
+                <ScalarProperty Name="Entertaiment" ColumnName="Entertaiment" />
+                <ScalarProperty Name="Auto" ColumnName="Auto" />
+                <ScalarProperty Name="HouseholdExpenses" ColumnName="HouseholdExpenses" />
+                <ScalarProperty Name="Clothing" ColumnName="Clothing" />
+                <ScalarProperty Name="Loan" ColumnName="Loan" />
+                <ScalarProperty Name="OtherExpenses" ColumnName="OtherExpenses" />
+                <ScalarProperty Name="DescriptionExpenditure" ColumnName="DescriptionExpenditure" />
+                <ScalarProperty Name="ExpensesAddedOn" ColumnName="ExpensesAddedOn" />
+                <ScalarProperty Name="TotalExpense" ColumnName="TotalExpense" />
+                <ScalarProperty Name="Budget_BudgetId" ColumnName="Budget_BudgetId" />
+                <ScalarProperty Name="Budget_BudgetId1" ColumnName="Budget_BudgetId1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incomes">
+            <EntityTypeMapping TypeName="NexcoAppModel.Income">
+              <MappingFragment StoreEntitySet="Incomes">
+                <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+                <ScalarProperty Name="OtherJob" ColumnName="OtherJob" />
+                <ScalarProperty Name="OtherIncome" ColumnName="OtherIncome" />
+                <ScalarProperty Name="DescriptionIncome" ColumnName="DescriptionIncome" />
+                <ScalarProperty Name="IncomeAddedOn" ColumnName="IncomeAddedOn" />
+                <ScalarProperty Name="TotalIncome" ColumnName="TotalIncome" />
+                <ScalarProperty Name="Budget_BudgetId" ColumnName="Budget_BudgetId" />
+                <ScalarProperty Name="Budget_BudgetId1" ColumnName="Budget_BudgetId1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NexcoAppModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

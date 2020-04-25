@@ -19,13 +19,13 @@ namespace NexcoWeb.WebUI.Controllers
             repositoryExpenditure = repo;
 
         }
-
+        [Authorize]
         public ActionResult IndexExpenditure()
         {
 
             return View(repositoryExpenditure.Expenditures.OrderByDescending(p => p.ExpensesAddedOn));
         }
-
+        [Authorize]
         public ViewResult Create()
         {
             return View(new Expenditure());

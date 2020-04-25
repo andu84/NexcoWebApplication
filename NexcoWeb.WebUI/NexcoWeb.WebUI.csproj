@@ -57,8 +57,8 @@
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Moq, Version=4.13.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.13.1\lib\net45\Moq.dll</HintPath>
+    <Reference Include="Moq, Version=4.14.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.14.0\lib\net45\Moq.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -196,7 +196,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\budget\List.cshtml" />
     <Content Include="Views\Expenditure\List.cshtml" />
     <Content Include="Views\Income\List.cshtml" />
   </ItemGroup>
@@ -245,8 +244,6 @@
     <Content Include="Views\AdminExpenditure\IndexExpenditure.cshtml" />
     <Content Include="Views\AdminBudget\IndexBudget.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
-    <Content Include="Views\AdminBudget\Create.cshtml" />
-    <Content Include="Views\AdminBudget\EditBudget.cshtml" />
     <Content Include="Views\AdminExpenditure\Create.cshtml" />
     <Content Include="Views\AdminExpenditure\EditExpenditure.cshtml" />
     <Content Include="Views\Nav\MainMenu.cshtml" />
@@ -255,6 +252,7 @@
     <Content Include="Views\IncomeExpenditure\LastThreeMounts.cshtml" />
     <Content Include="Scripts\jquery-3.5.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.0.min.map" />
+    <Content Include="Views\budget\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
