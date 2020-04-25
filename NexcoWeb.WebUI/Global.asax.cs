@@ -21,7 +21,7 @@ namespace NexcoWeb.WebUI
         protected void Application_Start()
         {
             // Register Web API routing support before anything else
-            //GlobalConfiguration.Configure(WebApiConfig.Register);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             Database.SetInitializer<EFDbContext>(null);
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);          
