@@ -7,7 +7,7 @@ namespace WebAPI.Models
 {
     public class IncomeClass
     {
-        public Budget Budget { get; set; }
+        //public Budget Budget { get; set; }
       
         public int IncomeId { get; set; }
         public int? Salary { get; set; }

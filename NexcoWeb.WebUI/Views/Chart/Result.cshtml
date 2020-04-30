@@ -1,0 +1,85 @@
+﻿@model IEnumerable<NexcoWeb.Domain.Entities.Budget>
+@{
+        ViewBag.Title = "Result";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<figure class="">
+    <div id="container"></div>
+    <p class="highcharts-description">
+       
+    </p>
+</figure>
+<script>
+
+
+
+    Highcharts.chart('container', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Monthly Average Incomes'
+        },
+        subtitle: {
+            text: 'Nexco Financial management App'
+        },
+        xAxis: {
+            categories: [ @foreach (var item in Model)
+                {
+                
+                    string Date = string.Join(",",@item.Income.DisplayDateIncomes) + "," ;
+
+                @Date
+
+
+                }]
+        },
+        yAxis: {
+            title: {
+                text: 'Pounds (£)'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [
+            {
+                name: 'Incomes',
+                data: [ @foreach (var item in Model)
+                {
+
+                    string totalIncome = string.Join(",",@item.Income.TotalIncome) + "," ;
+
+                @totalIncome
+
+
+                }]
+
+            },
+
+        {
+            name: 'Expenses',
+            data: [ @foreach (var item in Model)
+            {
+
+                string totalExpenses = string.Join(",", @item.Expenditure.TotalExpense) + ",";
+
+                @totalExpenses }]
+        }
+        ]
+    });
+
+
+</script>
+

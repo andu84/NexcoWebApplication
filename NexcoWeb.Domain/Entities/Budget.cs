@@ -48,7 +48,13 @@ namespace NexcoWeb.Domain.Entities
 
                 return $"The available Budget is {TotalBudget}";
             }
-
+        }
+        public string DisplayDateBudget
+        {
+            get
+            {
+                return $"{BudgetAddedOn:Y} ";
+            }
         }
     }
 }

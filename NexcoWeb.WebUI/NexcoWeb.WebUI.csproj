@@ -185,6 +185,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
+    <Content Include="Scripts\chart\exporting.js" />
+    <Content Include="Scripts\chart\highcharts.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
     <Content Include="Scripts\jquery-3.5.0.slim.js" />
@@ -196,7 +198,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\budget\List.cshtml" />
     <Content Include="Views\Expenditure\List.cshtml" />
     <Content Include="Views\Income\List.cshtml" />
   </ItemGroup>
@@ -211,6 +212,7 @@
     <Compile Include="Controllers\AdminExpenditureController.cs" />
     <Compile Include="Controllers\Api\BudgetApiController.cs" />
     <Compile Include="Controllers\BudgetController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\ExpenditureController.cs" />
     <Compile Include="Controllers\IncomeController.cs" />
     <Compile Include="Controllers\IncomeExpenditureController.cs" />
@@ -250,10 +252,12 @@
     <Content Include="Views\AdminExpenditure\EditExpenditure.cshtml" />
     <Content Include="Views\Nav\MainMenu.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\IncomeExpenditure\Index.cshtml" />
-    <Content Include="Views\IncomeExpenditure\LastThreeMounts.cshtml" />
     <Content Include="Scripts\jquery-3.5.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.0.min.map" />
+    <Content Include="Views\IncomeExpenditure\List.cshtml" />
+    <Content Include="Views\IncomeExpenditure\Index.cshtml" />
+    <Content Include="Views\IncomeExpenditure\LastThreeMounts.cshtml" />
+    <Content Include="Views\Chart\Result.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -2,12 +2,15 @@
 
 <div class="well">
     <h3>
-        <span class="lead">@Model.DescriptionBudget</span>
+        <span class="lead">
+
+            <strong> @Model.DisplayDateBudget</strong>
+        </span>
     </h3>
-    <strong>@Model.DisplayTextBudget </strong>
+    @Model.DisplayTextBudget
 
     <span class="pull-right">
-        @Html.ActionLink("Details", "../AdminBudget/IndexBudget", null, new { @class = "btn btn-info" })
+        @Html.ActionLink("Details", "../IncomeExpenditure/Index", null, new { @class = "btn btn-info" })
     </span>
 
 </div>

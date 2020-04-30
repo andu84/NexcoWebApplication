@@ -38,7 +38,7 @@ namespace NexcoWeb.WebUI.Controllers
                 repositoryExpenditure.SaveExpenditure(expenditure);
                 TempData["message"] = string.Format("{0} has been added",
                     expenditure.DescriptionExpenditure);
-                return RedirectToAction("../Expenditure/List");
+                return RedirectToAction("../IncomeExpenditure/Index","");
             }
             else
             {

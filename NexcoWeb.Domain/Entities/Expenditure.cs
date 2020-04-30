@@ -9,7 +9,7 @@ namespace NexcoWeb.Domain.Entities
 {
     public class Expenditure
     {
-        public Budget Budget{ get; set; }
+        public Budget Budget{ get; }
         public Expenditure()
         {
             Budgets = new List<Budget>();
@@ -60,9 +60,13 @@ namespace NexcoWeb.Domain.Entities
             {
                 return $"{ExpensesAddedOn:Y} ";
             }
+            set
+            {
+
+            }
         }
 
 
-        public ICollection<Budget> Budgets { get; set; }
+        public ICollection<Budget> Budgets { get; }
     }
 }

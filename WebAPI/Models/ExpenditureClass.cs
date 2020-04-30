@@ -7,7 +7,7 @@ namespace WebAPI.Models
 {
     public class ExpenditureClass
     {
-        public Budget Budget { get; set; }    
+        //public Budget Budget { get; set; }    
         public int ExpenditureId { get; set; }
         public int? Travel { get; set; }
         public int? Food { get; set; }

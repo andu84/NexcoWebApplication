@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<NexcoWeb.Domain.Entities.Budget>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -10,19 +11,21 @@
     </div>
     <div class="panel-heading col-lg-9">
         <div class="panel-body">
-            <h2>Budget details last three months</h2>
+            <h2>Budget details</h2>
             <table class="table table-striped table-condesed table-bordered">
                 <tr>
                     <th>Date</th>
                     <th>Total Incomes</th>
                     <th>Total expenditure</th>
                     <th>Budget avaible</th>
-
+                    <th></th>
                 </tr>
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td><b>@item.Income.DisplayDateIncomes</b></td>
+                        <td>
+                            <b>@item.Income.DisplayDateIncomes</b>
+                        </td>
                         <td> @item.Income.TotalIncome</td>
                         <td> @item.Expenditure.TotalExpense</td>
                         <td>
@@ -30,19 +33,30 @@
                                 total = item.Income.TotalIncome - item.Expenditure.TotalExpense;}
                             @total
                         </td>
+                        <td>
+                            <div class="btn btn-info btn-xs">
+
+                                @Html.ActionLink("Edit Incomes", "../Admin/EditIncome", new { IncomeId = item.Income.IncomeId })
+                        </td>
+                        <td>
+                            <div class="btn btn-info btn-xs">
+                                @Html.ActionLink("Edit Expenditure", "../AdminExpenditure/EditExpenditure", new { ExpenditureId = item.Expenditure.ExpenditureId })
+                            </div>
+                        </td>
                     </tr>
                 }
-            </table>
-            <div class="panel-footer">
-                @Html.ActionLink("Add new Expenditure", "Create", null, new { @class = "btn btn-defaul" })
-                @Html.ActionLink("Add new Incomes", "Create", null, new { @class = "btn btn-defaul" })
-            </div>
+        </div>
+        </table>
+        <div class="panel-footer">
+            @Html.ActionLink("Go Back To Dasboard", "../IncomeExpenditure/List", null, new { @class = "btn btn-defaul" })
+           
         </div>
     </div>
-    <hr />
-    <footer>
-        <p class="text-center">&copy; @DateTime.Now.Year - Nexco Financial Management Application</p>
-    </footer>
-
 </div>
+<hr />
+<footer>
+    <p class="text-center">&copy; @DateTime.Now.Year - Nexco Financial Management Application</p>
+</footer>
+
+        </div>
 

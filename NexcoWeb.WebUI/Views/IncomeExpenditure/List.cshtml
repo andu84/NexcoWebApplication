@@ -1,0 +1,23 @@
+﻿
+@model NexcoWeb.WebUI.Models.BudgetsListViewModel
+@using NexcoWeb.WebUI.HtmlHelpers;
+
+@{
+    ViewBag.Title = "Budgets";
+}
+
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-danger">@TempData["message"]</div>
+}
+@foreach (var i in Model.Budgets)
+{
+    @Html.Partial("BudgetSummary", i)
+}
+
+@Html.ActionLink("The Last 3 mounts Details", "../IncomeExpenditure/LastThreeMounts", null, new { @class = "btn btn-info pull-left" })
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
+</div>
+

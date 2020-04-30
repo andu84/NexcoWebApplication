@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -48,14 +48,12 @@
                         DescriptionExpenditure = c.String(),
                         ExpensesAddedOn = c.DateTime(nullable: false),
                         TotalExpense = c.Int(),
+                        DisplayDateExpenses = c.String(),
                         Budget_BudgetId = c.Int(),
-                        Budget_BudgetId1 = c.Int(),
                     })
                 .PrimaryKey(t => t.ExpenditureId)
                 .ForeignKey("dbo.Budgets", t => t.Budget_BudgetId)
-                .ForeignKey("dbo.Budgets", t => t.Budget_BudgetId1)
-                .Index(t => t.Budget_BudgetId)
-                .Index(t => t.Budget_BudgetId1);
+                .Index(t => t.Budget_BudgetId);
             
             CreateTable(
                 "dbo.Incomes",
@@ -69,14 +67,12 @@
                         DescriptionIncome = c.String(),
                         IncomeAddedOn = c.DateTime(nullable: false),
                         TotalIncome = c.Int(nullable: false),
+                        DisplayDateIncomes = c.String(),
                         Budget_BudgetId = c.Int(),
-                        Budget_BudgetId1 = c.Int(),
                     })
                 .PrimaryKey(t => t.IncomeId)
                 .ForeignKey("dbo.Budgets", t => t.Budget_BudgetId)
-                .ForeignKey("dbo.Budgets", t => t.Budget_BudgetId1)
-                .Index(t => t.Budget_BudgetId)
-                .Index(t => t.Budget_BudgetId1);
+                .Index(t => t.Budget_BudgetId);
             
             CreateTable(
                 "dbo.Users",
@@ -84,6 +80,9 @@
                     {
                         UserId = c.String(nullable: false, maxLength: 128),
                         Password = c.String(),
+                        FirstName = c.String(),
+                        Lastname = c.String(),
+                        CreateDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.UserId);
             
@@ -91,17 +90,13 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.Incomes", "Budget_BudgetId1", "dbo.Budgets");
+            DropForeignKey("dbo.Incomes", "Budget_BudgetId", "dbo.Budgets");
             DropForeignKey("dbo.Budgets", "Income_IncomeId1", "dbo.Incomes");
             DropForeignKey("dbo.Budgets", "Income_IncomeId", "dbo.Incomes");
-            DropForeignKey("dbo.Incomes", "Budget_BudgetId", "dbo.Budgets");
-            DropForeignKey("dbo.Expenditures", "Budget_BudgetId1", "dbo.Budgets");
+            DropForeignKey("dbo.Expenditures", "Budget_BudgetId", "dbo.Budgets");
             DropForeignKey("dbo.Budgets", "Expenditure_ExpenditureId1", "dbo.Expenditures");
             DropForeignKey("dbo.Budgets", "Expenditure_ExpenditureId", "dbo.Expenditures");
-            DropForeignKey("dbo.Expenditures", "Budget_BudgetId", "dbo.Budgets");
-            DropIndex("dbo.Incomes", new[] { "Budget_BudgetId1" });
             DropIndex("dbo.Incomes", new[] { "Budget_BudgetId" });
-            DropIndex("dbo.Expenditures", new[] { "Budget_BudgetId1" });
             DropIndex("dbo.Expenditures", new[] { "Budget_BudgetId" });
             DropIndex("dbo.Budgets", new[] { "Income_IncomeId1" });
             DropIndex("dbo.Budgets", new[] { "Income_IncomeId" });
