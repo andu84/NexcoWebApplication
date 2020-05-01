@@ -16,21 +16,7 @@ new { @class = "btn btn-block btn-info btn-lg" })
 @Html.ActionLink("Main Menu", "List", "IncomeExpenditure", null,
 new { @class = "btn btn-block btn-info btn-lg" })
 
-@*@foreach (var link in Model)
-    {
-        @Html.RouteLink(link, new
-    {
-        controller = "Income",
-        action = "List",
-        description = link,
-        page = 1
-    },
-        new {
-            @class = "btn btn-block btn-default btn-lg"
-              + (link == ViewBag.SelectedDescription? " btn-primary" : "")
-    }
-        )
-    }*@
+
 
 
 

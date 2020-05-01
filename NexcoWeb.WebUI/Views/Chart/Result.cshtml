@@ -1,22 +1,23 @@
 ﻿@model IEnumerable<NexcoWeb.Domain.Entities.Budget>
 @{
-        ViewBag.Title = "Result";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+    ViewBag.Title = "Char";
+    Layout = "~/Views/Shared/ChartShare.cshtml";
+}
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script>
 
-<figure class="">
-    <div id="container"></div>
-    <p class="highcharts-description">
-       
-    </p>
-</figure>
-<script>
-
+        var arrDate = [];
+        var arrIncomes = [];
+        var arrExpenses = [];
+    @foreach (var item in Model)
+                {
+                    string dateIncomes= string.Join("",@item.Income.DisplayDateIncomes);
+                @:arrDate.push("@dateIncomes"); 
+                    string totalIncome = string.Join("",@item.Income.TotalIncome);
+                @:arrIncomes.push(@totalIncome);
+                    string totalExpenses = string.Join("", @item.Expenditure.TotalExpense);
+                @:arrExpenses.push(@totalExpenses); 
+            }
 
 
     Highcharts.chart('container', {
@@ -30,15 +31,7 @@
             text: 'Nexco Financial management App'
         },
         xAxis: {
-            categories: [ @foreach (var item in Model)
-                {
-                
-                    string Date = string.Join(",",@item.Income.DisplayDateIncomes) + "," ;
-
-                @Date
-
-
-                }]
+            categories: arrDate
         },
         yAxis: {
             title: {
@@ -56,30 +49,17 @@
         series: [
             {
                 name: 'Incomes',
-                data: [ @foreach (var item in Model)
-                {
-
-                    string totalIncome = string.Join(",",@item.Income.TotalIncome) + "," ;
-
-                @totalIncome
-
-
-                }]
+                data: arrIncomes
 
             },
 
         {
             name: 'Expenses',
-            data: [ @foreach (var item in Model)
-            {
-
-                string totalExpenses = string.Join(",", @item.Expenditure.TotalExpense) + ",";
-
-                @totalExpenses }]
+            data: arrExpenses
         }
         ]
     });
 
 
-</script>
+    </script>
 

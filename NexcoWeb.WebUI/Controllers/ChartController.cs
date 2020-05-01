@@ -43,5 +43,16 @@ namespace NexcoWeb.WebUI.Controllers
 
             return View(query);
         }
+        public ActionResult ResultPartialView()
+        {
+            List<Income> incomes = db.Incomes.ToList();
+            List<Expenditure> expenditures = db.Expenditures.ToList();
+            List<Budget> budgets = db.Budgets.ToList();
+            var query = from i in incomes
+                        join ex in expenditures on i.IncomeAddedOn equals ex.ExpensesAddedOn
+                        select new Budget { Income = i, Expenditure = ex };
+
+            return View(query);
+        }
     }
 }

@@ -1,0 +1,57 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse" role="navigation">
+        <a class="navbar-brand" href="~/budget/List"> Nexco Financial Management App</a>
+        <div class="buttons pull-right">
+            @Html.ActionLink("Budget", "List", "IncomeExpenditure", null,
+             new { @class = "btn btn-info btn-sm " })
+
+
+            @Html.ActionLink("Income", "List", "Income", null,
+            new { @class = "btn btn-info btn-sm" })
+
+            @Html.ActionLink("Expenses", "List", "Expenditure", null,
+            new { @class = "btn btn-info btn-sm" })
+            @{
+                var userName = HttpContext.Current.User.Identity.Name;
+                if (userName != "")
+                {
+
+                    <span class="btn-info btn btn-sm">
+                        @Html.ActionLink(HttpContext.Current.User.Identity.Name + " -Logout", "Logout", "Account")
+                    </span>
+                }
+            }
+        </div>
+    </div>
+    <div>
+        <div class="row panel panel-default">
+            <div id="categoris" class="col-lg-3">
+                @Html.Action("CharMenu", "Nav")
+            </div>
+            <figure class="col-lg-9">
+                <div id="container"></div>
+                <p class="highcharts-description">
+
+                </p>
+            </figure>
+
+            @RenderBody()
+        </div>
+</body>
+</html>
+
