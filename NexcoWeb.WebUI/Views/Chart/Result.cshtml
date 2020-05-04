@@ -4,7 +4,39 @@
     Layout = "~/Views/Shared/ChartShare.cshtml";
 }
 
-    <script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<body>
+    <div class="navbar navbar-inverse" role="navigation">
+        <a class="navbar-brand" href="~/budget/List"> Nexco Financial Management App</a>
+        <div class="buttons pull-right">
+            @Html.ActionLink("Budget", "List", "IncomeExpenditure", null,
+             new { @class = "btn btn-info btn-sm " })
+
+
+            @Html.ActionLink("Income", "List", "Income", null,
+            new { @class = "btn btn-info btn-sm" })
+
+            @Html.ActionLink("Expenses", "List", "Expenditure", null,
+            new { @class = "btn btn-info btn-sm" })
+            @{
+                var userName = HttpContext.Current.User.Identity.Name;
+                if (userName != "")
+                {
+
+                    <span class="btn-info btn btn-sm">
+                        @Html.ActionLink(HttpContext.Current.User.Identity.Name + " -Logout", "Logout", "Account")
+                    </span>
+                }
+            }
+        </div>
+    </div>
+    <div>
+        <script>
 
         var arrDate = [];
         var arrIncomes = [];
@@ -12,14 +44,21 @@
     @foreach (var item in Model)
                 {
                     string dateIncomes= string.Join("",@item.Income.DisplayDateIncomes);
-                @:arrDate.push("@dateIncomes"); 
+                @:arrDate.push("@dateIncomes");
                     string totalIncome = string.Join("",@item.Income.TotalIncome);
                 @:arrIncomes.push(@totalIncome);
                     string totalExpenses = string.Join("", @item.Expenditure.TotalExpense);
-                @:arrExpenses.push(@totalExpenses); 
+                @:arrExpenses.push(@totalExpenses);
             }
+       </script>
+        <figure class="col-lg-4">
+            <div id="container"></div>
+            <p class="highcharts-description">
 
+            </p>
+        </figure>
 
+<script>
     Highcharts.chart('container', {
         chart: {
             type: 'line'
@@ -55,11 +94,105 @@
 
         {
             name: 'Expenses',
-            data: arrExpenses
+            data: 0
         }
         ]
     });
+        </script>
+        <figure class="col-lg-4">
+            <div id="container2"></div>
+            <p class="highcharts-description">
 
+            </p>
+        </figure>
+        <script>
+            Highcharts.chart('container2', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Monthly Average Expenses'
+                },
+                subtitle: {
+                    text: 'Nexco Financial management App'
+                },
+                xAxis: {
+                    categories: arrDate
+                },
+                yAxis: {
+                    title: {
+                        text: 'Pounds (£)'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [
+                    {
+                        name: 'Incomes',
+                        data: 0
 
-    </script>
+                    },
+
+                    {
+                        name: 'Expenses',
+                        data: arrExpenses
+                    }
+                ]
+            });
+        </script>
+        
+        <figure class="col-lg-4">
+            <div id="container3"></div>
+            <p class="highcharts-description">
+
+            </p>
+        </figure>
+        <script>
+            Highcharts.chart('container3', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Monthly Average Budget'
+                },
+                subtitle: {
+                    text: 'Nexco Financial management App'
+                },
+                xAxis: {
+                    categories: arrDate
+                },
+                yAxis: {
+                    title: {
+                        text: 'Pounds (£)'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [
+                    {
+                        name: 'Incomes',
+                        data: arrIncomes
+
+                    },
+
+                    {
+                        name: 'Expenses',
+                        data: arrExpenses
+                    }
+                ]
+            });
+
+        </script>
 

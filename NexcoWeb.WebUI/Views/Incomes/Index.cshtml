@@ -1,0 +1,84 @@
+﻿@model IEnumerable<NexcoWeb.Domain.Entities.Income>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+        @if (TempData["SuccessMessage2"] != null)
+        {
+            <div class="alert alert-danger">@TempData["SuccessMessage2"]</div>
+        }
+
+
+<p>
+    <a href="@Url.Action("AddOrEdit", "Incomes")" class="btn btn-info">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead class="table-heading">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DisplayDateIncomes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InterestRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OtherJob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OtherIncome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalIncome)
+            </th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayDateIncomes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InterestRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OtherJob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OtherIncome)
+            </td>      
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalIncome)
+            </td>
+
+            <td>
+                <a href="@Url.Action("AddOrEdit", "Incomes", new { id = item.IncomeId })"
+                   class="btn btn-info">Edit </a>
+                <a onclick="Delete(@item.IncomeId)" class="btn btn-info">Delete </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts {
+    <script>
+        function Delete(id) {
+            alertify.confirm('rtrety', 'aaa?', function () {
+                window.location.href = '@Url.Action("Delete","Incomes")/' + id;
+            }, null);
+        }
+    </script>
+    }
