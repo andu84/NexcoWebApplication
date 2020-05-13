@@ -14,7 +14,7 @@ namespace NexcoWeb.Domain.Concrete
                                                             u.Password == password);
             if (result == null)
                 return false;
-            return true; 
+            return true;
         }
 
         public bool Logout()
