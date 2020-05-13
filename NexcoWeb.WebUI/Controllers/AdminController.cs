@@ -36,8 +36,8 @@ namespace NexcoWeb.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 repositoryIncome.SaveIncome(income);
-                TempData["message"] = string.Format("{0} has been added",
-                    income.DescriptionIncome);
+                TempData["message"] = string.Format("The Incomes from {0} has been added",
+                    income.DisplayDateIncomes);
                 return RedirectToAction("../IncomeExpenditure/Index");
             }
             else
@@ -59,8 +59,8 @@ namespace NexcoWeb.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 repositoryIncome.SaveIncome(income);
-                TempData["message"] = string.Format("{0} has been saved",
-                    income.DescriptionIncome);
+                TempData["message"] = string.Format("The Incomes from {0} has been saved",
+                    income.DisplayDateIncomes);
                 return RedirectToAction("IndexIncome");
             }
             else
@@ -74,8 +74,8 @@ namespace NexcoWeb.WebUI.Controllers
             Income deletedIncome = repositoryIncome.DeleteIncome(IncomeId);
             if (deletedIncome != null)
             {
-                TempData["message"] = string.Format("{0} was deleted",
-                    deletedIncome.DescriptionIncome);
+                TempData["message"] = string.Format(" The Incomes from {0} was deleted",
+                    deletedIncome.DisplayDateIncomes);
             }
             return RedirectToAction("IndexIncome");
         }

@@ -36,8 +36,8 @@ namespace NexcoWeb.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 repositoryExpenditure.SaveExpenditure(expenditure);
-                TempData["message"] = string.Format("{0} has been added",
-                    expenditure.DescriptionExpenditure);
+                TempData["message"] = string.Format("The Expenses from {0} has been added",
+                    expenditure.DisplayDateExpenses);
                 return RedirectToAction("../IncomeExpenditure/Index","");
             }
             else
@@ -59,8 +59,8 @@ namespace NexcoWeb.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 repositoryExpenditure.SaveExpenditure(expenditure);
-                TempData["message"] = string.Format("{0} has been saved",
-                    expenditure.DescriptionExpenditure);
+                TempData["message"] = string.Format("The Expenses from {0} has been saved",
+                    expenditure.DisplayDateExpenses);
                 return RedirectToAction("IndexExpenditure");
             }
             else
@@ -75,8 +75,8 @@ namespace NexcoWeb.WebUI.Controllers
             Expenditure deletedExpenditure = repositoryExpenditure.DeleteExpenditure(expenditureId);
             if (deletedExpenditure != null)
             {
-                TempData["message"] = string.Format("{0} was deleted",
-                    deletedExpenditure.DescriptionExpenditure);
+                TempData["message"] = string.Format("The Expenses from {0} was deleted",
+                    deletedExpenditure.DisplayDateExpenses);
             }
             return RedirectToAction("IndexExpenditure");
         }

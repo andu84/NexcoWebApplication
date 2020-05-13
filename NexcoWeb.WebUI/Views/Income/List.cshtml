@@ -5,17 +5,53 @@
     ViewBag.Title = "Incomes";
 }
 
+<div class="  row panel panel-default">
 
-@if (TempData["message"] != null)
-{
-    <div class="alert alert-danger">@TempData["message"]</div>
-}
-@foreach (var i in Model.Incomes)
-{
-    @Html.Partial("IncomeSummary", i)
-}
+    <div class="panel-heading">
 
-@Html.ActionLink("Create new Incomes", "../Admin/Create", null, new { @class = "btn btn-info pull-left" })
-<div class="btn-group pull-right">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
+        <div class="panel-body">
+
+            <table class="table table-striped table-condesed table-bordered">
+                <tr>
+                    <th>
+                        <b>Date</b>
+                    </th>
+                    <th>
+                        <b>Salary</b>
+                    </th>
+                    <th>
+                        <b>Interest Rate</b>
+                    </th>
+                    <th>
+                        <b>Other Jobs</b>
+                    </th>
+                    <th>
+                        <b>Other Income</b>
+                    </th>
+                    <th>
+                        <b>Total Income</b>
+                    </th>
+                    <th>
+                        <b>Mentions</b>
+                    </th>
+
+                    <th></th>
+                    <th></th>
+                </tr>
+                @if (TempData["message"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["message"]</div>
+                }
+                @foreach (var i in Model.Incomes)
+                {
+                    @Html.Partial("IncomeSummary", i)
+                }
+            </table>
+            @Html.ActionLink("Create new Incomes", "../Admin/Create", null, new { @class = "btn btn-info pull-left" })
+            <div class="btn-group pull-right">
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
+            </div>
+        </div>
+    </div>
+
 </div>

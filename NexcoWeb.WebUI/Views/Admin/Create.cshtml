@@ -1,7 +1,7 @@
 ﻿@model NexcoWeb.Domain.Entities.Income
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add Incomes";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -48,7 +48,7 @@
 
         <div class="form-group">
             <div class="control-label col-md-2">
-                <b>Other Income</b>
+                <b>Other Incomes</b>
             </div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.OtherIncome, new { htmlAttributes = new { @class = "form-control" } })
@@ -58,7 +58,7 @@
 
         <div class="form-group">
             <div class="control-label col-md-2">
-                <b>Description income</b>
+                <b>Mentions</b>
             </div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DescriptionIncome, new { htmlAttributes = new { @class = "form-control" } })

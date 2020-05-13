@@ -1,13 +1,51 @@
 ﻿@model NexcoWeb.Domain.Entities.Income
+@*@if (TempData["message"] != null)
+{
+    <div class="alert alert-danger">@TempData["message"]</div>
+}*@
 
-    <div class="well">
-        <h3>
-            <strong> @Model.DisplayDateIncomes </strong>
-            <span class="pull-right">
-                @Html.ActionLink("Details", "../Admin/IndexIncome",null, new { @class = "btn btn-info" })
-            </span>
-        </h3>
 
-        <span class="lead">@Model.DisplayTextIncomes</span>
-    </div>
+              
+
+                <tr>
+                    <td>
+                        <strong> @Model.DisplayDateIncomes </strong>
+                    </td>
+                    <td>
+                        <strong>@Model.Salary</strong>
+                    </td>
+                    <td>
+                        <strong>@Model.InterestRate</strong>
+                    </td>
+                    <td>
+                        <strong>@Model.OtherJob</strong>
+                    </td>
+                    <td>
+                        <strong>@Model.OtherIncome</strong>
+                    </td>
+                    <td>
+                        <strong>@Model.DisplayTotalIncome</strong>
+                    </td>
+                    <td>
+                        <strong>@Model.DescriptionIncome</strong>
+                    </td>
+                    <td>
+                        <div class="btn btn-info btn-xs">
+                            @Html.ActionLink("Edit", "EditIncome", new { incomeId = @Model.IncomeId })
+                        </div>
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("DeleteIncome", "Admin"))
+                        {
+                            @Html.Hidden("IncomeId", @Model.IncomeId)
+                            <input type="submit" class="btn btn-info btn-xs"
+                                   value="Delete" />
+                        }
+
+                    </td>
+                </tr>
+                
+
+
+
 
