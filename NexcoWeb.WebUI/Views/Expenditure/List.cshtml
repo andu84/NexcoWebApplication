@@ -1,22 +1,75 @@
 ﻿@model NexcoWeb.WebUI.Models.ExpendituresListViewModel
 @using NexcoWeb.WebUI.HtmlHelpers;
 
+
 @{
     ViewBag.Title = "Expenditures";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-@if (TempData["message"] != null)
-{
-    <div class="alert alert-danger">@TempData["message"]</div>
-}
+<div class="row panel panel-default">
+    <div id="categoris" class="col-lg-3">
+        @Html.Action("Menu", "Nav")
+    </div>
+    <div class="panel-heading col-lg-9">
 
+        <div class="panel-body">
+            <h1>Expenses Details</h1>
+            <br />
+            <table class="table table-striped table-condesed table-bordered">
 
-@foreach (var i in Model.Expenditures)
-{
-    @Html.Partial("ExpenditureSummary", i)
-}
+                <tr>
+                    <th>
+                        <b>Date</b>
+                    </th>
+                    <th>
+                        <b>Travel</b>
+                    </th>
+                    <th>
+                        <b>Grocery</b>
+                    </th>
+                    <th>
+                        <b>Entertaiment</b>
+                    </th>
+                    <th>
+                        <b>Auto</b>
+                    </th>
+                    <th>
+                        <b>Household Expenses</b>
+                    </th>
+                    <th>
+                        <b>Clothing</b>
+                    </th>
+                    <th>
+                        <b>Loan</b>
+                    </th>
+                    <th>
+                        <b>Other Expenses</b>
+                    </th>
+                    <th>
+                        <b>Total</b>
+                    </th>
+                    <th>
+                        <b>Mentions</b>
+                    </th>
 
-@Html.ActionLink("Create new Expenses", "../AdminExpenditure/Create", null, new { @class = "btn btn-info pull-left" })
-<div class="btn-group pull-right">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
+                    <th></th>
+                    <th></th>
+                </tr>
+                @if (TempData["message"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["message"]</div>
+                }
+                @foreach (var i in Model.Expenditures)
+                {
+                    @Html.Partial("ExpenditureSummary", i)
+                }
+            </table>
+            @Html.ActionLink("Create new Incomes", "../AdminExpenditure/Create", null, new { @class = "btn btn-info pull-left" })
+            <div class="btn-group pull-right">
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
+            </div>
+        </div>
+    </div>
+
 </div>

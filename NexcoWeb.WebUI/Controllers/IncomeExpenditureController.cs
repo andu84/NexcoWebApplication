@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Schema;
 
 namespace NexcoWeb.WebuI.Controllers
 {
@@ -52,7 +53,7 @@ namespace NexcoWeb.WebuI.Controllers
         var query = from i in incomes
                         join ex in expenditures on i.IncomeAddedOn equals ex.ExpensesAddedOn
                         select new Budget { Income = i, Expenditure = ex };
-           
+          
             return View(query);
         }
         public ActionResult SaveDb()

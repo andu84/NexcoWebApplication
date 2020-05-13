@@ -33,11 +33,15 @@ namespace NexcoWeb.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(Expenditure expenditure)
         {
+
+            
+
             if (ModelState.IsValid)
             {
+             
                 repositoryExpenditure.SaveExpenditure(expenditure);
                 TempData["message"] = string.Format("The Expenses from {0} has been added",
-                    expenditure.DisplayDateExpenses);
+                    expenditure.DisplayDateExpenses);             
                 return RedirectToAction("../IncomeExpenditure/Index","");
             }
             else

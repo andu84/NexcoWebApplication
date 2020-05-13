@@ -4,40 +4,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Nexco Financial Application</title>
-
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/alertifyjs/alertify.min.css" rel="stylesheet" />
     <link href="~/Content/alertifyjs/themes/default.min.css" rel="stylesheet" />
-
+    <link href="~/Content/Site.css" rel="stylesheet" />
 
 </head>
 <body>
-    <div class="navbar navbar-inverse" role="navigation">
-        <a class="navbar-brand" href="~/budget/List"> Nexco Financial Management App</a>
-    </div>
-    <div class="row panel">
-        <div id="categoris" class="col-lg-3">
-            @Html.Action("MainMenu", "Nav")
-        </div>
-        <div class="col-lg-7">
-
-            @RenderBody()
-        </div>
-    </div>
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Nexco Financial Management Application</p>
-    </footer>
-
-
-
-
-    <script src="~/Scripts/jquery-3.5.0.min.js"></script>
-
-    <script src="~/Scripts/bootstrap.min.js"></script>
     
-    <script src="~/Scripts/alertify.min.js"></script>
-    @RenderSection("scripts", required: false)
+    <div>
+        <div class="row panel">
+            <div id="categoris" class="col-lg-3">
+                @Html.Action("MainMenu", "Nav")
+            </div>
+            <div class="col-lg-7">
+
+                @RenderBody()
+            </div>
+        </div>
+        <hr />
+
+        <script src="~/Scripts/jquery-3.5.0.min.js"></script>
+
+        <script src="~/Scripts/bootstrap.min.js"></script>
+
+        <script src="~/Scripts/alertify.min.js"></script>
+        @RenderSection("scripts", required: false)
 </body>
 </html>

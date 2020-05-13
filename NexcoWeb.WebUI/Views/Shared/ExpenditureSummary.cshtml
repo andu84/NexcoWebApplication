@@ -1,12 +1,49 @@
 ﻿@model NexcoWeb.Domain.Entities.Expenditure
 
-<div class="well">
-    <h3>
-        <strong> @Model.DisplayDateExpenses </strong>
-        <span class="pull-right ">
-            @Html.ActionLink("Details", "../AdminExpenditure/IndexExpenditure", null, new { @class = "btn btn-info" })
-        </span>
-    </h3>
-    <span class="lead">@Model.DisplayTextExpenses</span>
-</div>
+    <tr>
+        <td>
+            <strong> @Model.DisplayDateExpenses</strong>
+        </td>
+        <td>
+            <strong>@Model.Travel</strong>
+        </td>
+        <td>
+            <strong>@Model.Food</strong>
+        </td>
+        <td>
+            <strong>@Model.Auto</strong>
+        </td>
+        <td>
+            <strong>@Model.HouseholdExpenses</strong>
+        </td>
+        <td>
+            <strong>@Model.Clothing</strong>
+        </td>
+        <td>
+            <strong>@Model.Loan</strong>
+        </td>
+        <td>
+            <strong>@Model.OtherExpenses</strong>
+        </td>
+        <td>
+            <strong>@Model.TotalExpense</strong>
+        </td>
+        <td>
+            <strong>@Model.DescriptionExpenditure</strong>
+        </td>
+        <td>
+            <div class="btn btn-info btn-xs">
+                @Html.ActionLink("Edit", "EditIncome", new { expenditureId = @Model.ExpenditureId })
+            </div>
+        </td>
+        <td>
+            @using (Html.BeginForm("DeleteIncome", "Admin"))
+            {
+                @Html.Hidden("ExpenditureId", @Model.ExpenditureId)
+                <input type="submit" class="btn btn-info btn-xs"
+                       value="Delete" />
+            }
+
+        </td>
+    </tr>
 

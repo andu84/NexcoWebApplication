@@ -2,10 +2,11 @@
 
 <html>
 <head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -34,9 +35,79 @@
         </div>
     </div>
     <div>
-      
-
         @RenderBody()
     </div>
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>About</h6>
+                    <p class="text-justify">
+                        <i>
+                            <i>
+                                Nexco App is an online personal management system
+                            </i>
+                            designed to help you to keep a record of your income from one month to another,
+                            so that you can plan your expenses in a proportionate way to them and save more money.
+                    </p>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="">Incomes Details</a>
+                        </li>
+                        <li>
+                            <a href="">Expenditure Details</a>
+                        </li>
+                        <li>
+                            <a href="">Avaible Budget</a>
+                        </li>
+                        <li>
+                            <a href="">Income Charts</a>
+                        </li>
+                        <li>
+                            <a href="">Expenditure Charts</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="">About Us</a>
+                        </li>
+                        <li>
+                            <a href="">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="">Contribute</a>
+                        </li>
+                        <li>
+                            <a href="">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="">Sitemap</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">
+                    <p>&copy; @DateTime.Now.Year - Nexco Financial Management Application</p>   
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
