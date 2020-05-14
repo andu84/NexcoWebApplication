@@ -14,7 +14,7 @@
     <div class="panel-heading col-lg-9">
 
         <div class="panel-body">
-            <h1>Expenses Details</h1>
+            <h3>Expenses Details</h3>
             <br />
             <table class="table table-striped table-condesed table-bordered">
 
@@ -65,7 +65,7 @@
                     @Html.Partial("ExpenditureSummary", i)
                 }
             </table>
-            @Html.ActionLink("Create new Incomes", "../AdminExpenditure/Create", null, new { @class = "btn btn-info pull-left" })
+            @Html.ActionLink("Create new Expenses", "../AdminExpenditure/Create", null, new { @class = "btn btn-info pull-left" })
             <div class="btn-group pull-right">
                 @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
             </div>

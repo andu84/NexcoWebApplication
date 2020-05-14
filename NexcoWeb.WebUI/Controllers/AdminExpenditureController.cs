@@ -63,7 +63,7 @@ namespace NexcoWeb.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 repositoryExpenditure.SaveExpenditure(expenditure);
-                TempData["message"] = string.Format("The Expenses from {0} has been saved",
+                TempData["message"] = string.Format("The Expenses from {0} has been updated",
                     expenditure.DisplayDateExpenses);
                 return RedirectToAction("IndexExpenditure");
             }

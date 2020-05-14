@@ -18,6 +18,7 @@
                     <th>Total Incomes</th>
                     <th>Total expenditure</th>
                     <th>Budget avaible</th>
+                    <th>Mentions</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -33,26 +34,65 @@
                             @{ int? total;
                                 total = item.Income.TotalIncome - item.Expenditure.TotalExpense;}
                             @total
-                            @*@{
-                                if (item.Expenditure.TotalExpense > item.Income.TotalIncome)
+                            @{
+                                int? Income = item.Income.TotalIncome;
+                                int? Expense = item.Expenditure.TotalExpense;
+                                // If expenses exceed incomes
+                                if (Expense > Income)
                                 {
-                                    <p>Be careful, your expenses will exceed your income!</p>
-                                }
+                                <td class="bg-danger">
+                                    Your expenses exceed
+                                    <br /> your income!
+                                </td>
+                            }
 
-                            }*@
-                        </td>
-                        <td>
-                            <div class="btn btn-info btn-xs">
+                            int? halfIncome = Income / 2;
+                            // If the income is 2 times more than the expenses
+                            if (halfIncome > Expense)
+                            {
+                                <td class="bg-success">
+                                    This is greate!
+                                    <br />
+                                    You saved more than half of your incomes!
+                                </td>
+                            }
 
-                                @Html.ActionLink("Edit Incomes", "../Admin/EditIncome", new { IncomeId = item.Income.IncomeId })
-                        </td>
-                        <td>
-                            <div class="btn btn-info btn-xs">
-                                @Html.ActionLink("Edit Expenditure", "../AdminExpenditure/EditExpenditure", new { ExpenditureId = item.Expenditure.ExpenditureId })
-                            </div>
-                        </td>
-                    </tr>
-                }
+                            int? threeQuarterIncome = Income - Income / 4;
+                            //user will receive notifications if the expenses exceed  three quarters of the income
+                            //and are smaller than total income
+                            if (Expense >= threeQuarterIncome & Expense < Income)
+                            {
+                                <td class="bg-warning">
+                                    Your expenses have exceeded
+                                    <br />
+                                    three quarters of your incomes!!
+                                </td>
+                            }
+                            //User receive  notification only when the expenses exceed half of the income
+                            //and are smaller than total income
+                            if (threeQuarterIncome > Expense & Expense > halfIncome)
+                            {
+                                <td class="bg-info">
+
+                                    Great, you saved some money!
+                                </td>
+                            }
+
+                            }
+
+                            </td>
+                            <td>
+                                <div class="btn btn-info btn-xs">
+
+                                    @Html.ActionLink("Edit Incomes", "../Admin/EditIncome", new { IncomeId = item.Income.IncomeId })
+                            </td>
+                            <td>
+                                <div class="btn btn-info btn-xs">
+                                    @Html.ActionLink("Edit Expenditure", "../AdminExpenditure/EditExpenditure", new { ExpenditureId = item.Expenditure.ExpenditureId })
+                                </div>
+                            </td>
+                        </tr>
+                    }
         </div>
         </table>
         <div class="panel-footer">
@@ -60,11 +100,7 @@
             @Html.ActionLink("Add new Incomes", "../Admin/Create", null, new { @class = "btn btn-defaul" })
         </div>
     </div>
-        </div>
-        <hr />
-        <footer>
-            <p class="text-center">&copy; @DateTime.Now.Year - Nexco Financial Management Application</p>
-        </footer>
+</div>
 
-        </div>
+
 

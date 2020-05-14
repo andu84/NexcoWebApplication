@@ -60,7 +60,7 @@ namespace NexcoWeb.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 repositoryIncome.SaveIncome(income);
-                TempData["message"] = string.Format("The Incomes from {0} has been saved",
+                TempData["message"] = string.Format("The Incomes from {0} has been updated",
                     income.DisplayDateIncomes);
                 return RedirectToAction("IndexIncome");
             }

@@ -51,6 +51,15 @@
                             designed to help you to keep a record of your income from one month to another,
                             so that you can plan your expenses in a proportionate way to them and save more money.
                     </p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                <p class="copyright-text">
+                                <p>&copy; @DateTime.Now.Year - Manea Alexandru </p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-xs-6 col-md-3">
@@ -97,17 +106,12 @@
             </div>
             <hr>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-sm-6 col-xs-12">
-                    <p class="copyright-text">
-                    <p>&copy; @DateTime.Now.Year - Nexco Financial Management Application</p>   
-                    </p>
-                </div>
-
-
-            </div>
-        </div>
     </footer>
+    <script src="~/Scripts/jquery-3.5.0.min.js"></script>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/alertify.min.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

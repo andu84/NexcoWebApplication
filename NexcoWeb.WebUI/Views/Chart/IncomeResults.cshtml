@@ -4,59 +4,50 @@
     Layout = "~/Views/Shared/ChartShare.cshtml";
 }
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-<body>
-    <div class="navbar navbar-inverse" role="navigation">
-        <a class="navbar-brand" href="~/budget/List"> Nexco Financial Management App</a>
-        <div class="buttons pull-right">
-            @Html.ActionLink("Budget", "List", "IncomeExpenditure", null,
-             new { @class = "btn btn-info btn-sm " })
 
 
-            @Html.ActionLink("Income", "List", "Income", null,
-            new { @class = "btn btn-info btn-sm" })
 
-            @Html.ActionLink("Expenses", "List", "Expenditure", null,
-            new { @class = "btn btn-info btn-sm" })
-            @{
-                var userName = HttpContext.Current.User.Identity.Name;
-                if (userName != "")
-                {
-
-                    <span class="btn-info btn btn-sm">
-                        @Html.ActionLink(HttpContext.Current.User.Identity.Name + " -Logout", "Logout", "Account")
-                    </span>
-                }
-            }
-        </div>
-    </div>
+   
+   
     
-        <script>
+    <script>
 
         var arrDate = [];
         var arrIncomes = [];
-        var arrExpenses = [];
+        var arrSalary = [];
+        var arrInterestRate = [];
+        var arrOtherIncomes = [];
+        var arrOtherJobs = [];
     @foreach (var item in Model) //cycle through each record returned
     {       // push the result into array to be able to display in chart
         string dateIncomes= string.Join("",@item.Income.DisplayDateIncomes);
                 @:arrDate.push("@dateIncomes");
                     string totalIncome = string.Join("",@item.Income.TotalIncome);
                 @:arrIncomes.push(@totalIncome);
-                    string totalExpenses = string.Join("", @item.Expenditure.TotalExpense);
-                @:arrExpenses.push(@totalExpenses);
+                    string totalSalary = string.Join("", @item.Income.Salary);
+                @:arrSalary.push(@totalSalary);
+                string InterestRate = string.Join("", @item.Income.InterestRate);
+                @:arrInterestRate.push(@InterestRate);
+                string OtherIncome = string.Join("", @item.Income.OtherIncome);
+                @:arrOtherIncomes.push(@OtherIncome);
+                string OtherJob = string.Join("", @item.Income.OtherJob);
+                @:arrOtherJobs.push(@OtherJob);
+               
             }
-        </script>
+    </script>
 
-        <div class="container">
+    <div class="row panel panel-default">
+        <div id="categoris" class="col-lg-2">
+            @Html.Action("Menu", "Nav")
+        </div>
+        <div class="container col-lg-9">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#Income" aria-controls="Income" role="tab" data-toggle="tab">Income</a></li>
-                <li role="presentation"><a href="#Expenses" aria-controls="Expenses" role="tab" data-toggle="tab">Expenses</a></li>
-                <li role="presentation"><a href="#Budget" aria-controls="Budget" role="tab" data-toggle="tab">Budget</a></li>
+                <li role="presentation"><a href="#Salary" aria-controls="Salarys" role="tab" data-toggle="tab">Salary</a></li>
+                <li role="presentation"><a href="#InterestRate" aria-controls="InterestRate" role="tab" data-toggle="tab">Interest Rate</a></li>
+                <li role="presentation"><a href="#OtherJob" aria-controls="OtherJob" role="tab" data-toggle="tab">Other Jobs</a></li>
+                <li role="presentation"><a href="#OtherIncome" aria-controls="OtherIncome" role="tab" data-toggle="tab">Other Incomes</a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -64,11 +55,7 @@
                 <div role="tabpanel" class="tab-pane active" id="Income">
                     <figure>
                         <div id="container"></div>
-                        <p class="highcharts-description">
-
-                        </p>
                     </figure>
-
                     <script>
                         Highcharts.chart('container', {
                             chart: {
@@ -106,22 +93,17 @@
                         });
                     </script>
                 </div>
-                <div role="tabpanel" class="tab-pane row" id="Expenses">
-                    <figure >
+                <div role="tabpanel" class="tab-pane row" id="Salary">
+                    <figure>
                         <div id="container2"></div>
-                        <p class="highcharts-description">
-                        </p>
                     </figure>
-                    <div >
-                        <img src="~/Content/img/Income.jpg" alt="Smiley face" height="42" width="42">
-                    </div>
                     <script>
                         Highcharts.chart('container2', {
                             chart: {
                                 type: 'line'
                             },
                             title: {
-                                text: 'Monthly Average Expenses'
+                                text: 'Monthly Average Salary'
                             },
                             subtitle: {
                                 text: 'Nexco Financial management App'
@@ -145,14 +127,14 @@
                             series: [
 
                                 {
-                                    name: 'Expenses',
-                                    data: arrExpenses
+                                    name: 'Salary',
+                                    data: arrSalary
                                 }
                             ]
                         });
                     </script>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="Budget">
+                <div role="tabpanel" class="tab-pane" id="InterestRate">
                     <figure>
                         <div id="container3"></div>
                         <p class="highcharts-description">
@@ -165,7 +147,7 @@
                                 type: 'line'
                             },
                             title: {
-                                text: 'Monthly Average Budget'
+                                text: 'Monthly Average Interest Rate'
                             },
                             subtitle: {
                                 text: 'Nexco Financial management App'
@@ -188,28 +170,103 @@
                             },
                             series: [
                                 {
-                                    name: 'Incomes',
-                                    data: arrIncomes //Display total incomes
-                                },
-
-                                {
-                                    name: 'Expenses',
-                                    data: arrExpenses //Display total expenses
+                                    name: 'Interest Rate',
+                                    data: arrInterestRate //Display total InterestRate
                                 }
+
                             ]
                         });
                     </script>
                 </div>
+                <div role="tabpanel" class="tab-pane" id="OtherIncome">
+                    <figure>
+                        <div id="container4"></div>
+                    </figure>
+                    <script>
+                        Highcharts.chart('container4', {
+                            chart: {
+                                type: 'line'
+                            },
+                            title: {
+                                text: 'Monthly Average Interest Rate'
+                            },
+                            subtitle: {
+                                text: 'Nexco Financial management App'
+                            },
+                            xAxis: {
+                                categories: arrDate // Display the mount
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Pounds (£)'
+                                }
+                            },
+                            plotOptions: {
+                                line: {
+                                    dataLabels: {
+                                        enabled: true
+                                    },
+                                    enableMouseTracking: false
+                                }
+                            },
+                            series: [
+                                {
+                                    name: 'Other Incomes',
+                                    data: arrOtherIncomes //Display total Other Incomes
+                                }
+
+                            ]
+                        });
+                    </script>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="OtherJob">
+                    <figure>
+                        <div id="container5"></div>
+                    </figure>
+                    <script>
+                        Highcharts.chart('container5', {
+                            chart: {
+                                type: 'line'
+                            },
+                            title: {
+                                text: 'Monthly Average Interest Rate'
+                            },
+                            subtitle: {
+                                text: 'Nexco Financial management App'
+                            },
+                            xAxis: {
+                                categories: arrDate // Display the mount
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Pounds (£)'
+                                }
+                            },
+                            plotOptions: {
+                                line: {
+                                    dataLabels: {
+                                        enabled: true
+                                    },
+                                    enableMouseTracking: false
+                                }
+                            },
+                            series: [
+                                {
+                                    name: 'Other Jobs',
+                                    data: arrOtherJobs //Display total Other Jobs
+                                }
+
+                            ]
+                        });
+                    </script>
+                </div>
+
             </div>
         </div>
-    
-    
-   
-</body>
 
-        <script src="~/Scripts/jquery-3.5.0.min.js"></script>
+        </div>
 
-        <script src="~/Scripts/bootstrap.min.js"></script>
 
-        <script src="~/Scripts/alertify.min.js"></script>
-       
+
+
+

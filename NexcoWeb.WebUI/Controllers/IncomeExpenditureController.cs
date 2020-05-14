@@ -47,14 +47,15 @@ namespace NexcoWeb.WebuI.Controllers
         
         public ActionResult Index()
         {
-        List<Income> incomes = db.Incomes.ToList();
-        List<Expenditure> expenditures = db.Expenditures.ToList();
-        List<Budget> budgets = db.Budgets.ToList();
-        var query = from i in incomes
-                        join ex in expenditures on i.IncomeAddedOn equals ex.ExpensesAddedOn
-                        select new Budget { Income = i, Expenditure = ex };
-          
-            return View(query);
+            List<Income> incomes = db.Incomes.ToList();
+            List<Expenditure> expenditures = db.Expenditures.ToList();
+            var minDate = DateTime.Now.AddMonths(-6);
+            var result = from i in incomes
+                         join ex in expenditures on i.IncomeAddedOn equals ex.ExpensesAddedOn
+                         where i.IncomeAddedOn > minDate && i.IncomeAddedOn < DateTime.Now
+                         select new Budget { Income = i, Expenditure = ex };
+
+            return View(result);
         }
         public ActionResult SaveDb()
         {

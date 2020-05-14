@@ -1,6 +1,10 @@
 ﻿
 <!DOCTYPE html>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -8,10 +12,110 @@
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
-  
 
+
+    <div>
+        <div class="navbar navbar-inverse" role="navigation">
+            <a class="navbar-brand" href="~/budget/List"> Nexco Financial Management App</a>
+            <div class="buttons pull-right">
+                @Html.ActionLink("Budget", "List", "IncomeExpenditure", null,
+                 new { @class = "btn btn-info btn-sm " })
+
+
+                @Html.ActionLink("Income", "List", "Income", null,
+                new { @class = "btn btn-info btn-sm" })
+
+                @Html.ActionLink("Expenses", "List", "Expenditure", null,
+                new { @class = "btn btn-info btn-sm" })
+                @{
+                    var userName = HttpContext.Current.User.Identity.Name;
+                    if (userName != "")
+                    {
+
+                        <span class="btn-info btn btn-sm">
+                            @Html.ActionLink(HttpContext.Current.User.Identity.Name + " -Logout", "Logout", "Account")
+                        </span>
+                    }
+                }
+            </div>
+        </div>
             @RenderBody()
         </div>
-</body>
+        <!-- Site footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h6>About</h6>
+                        <p class="text-justify">
+                            <i>
+                                <i>
+                                    Nexco App is an online personal management system
+                                </i>
+                                designed to help you to keep a record of your income from one month to another,
+                                so that you can plan your expenses in a proportionate way to them and save more money.
+                        </p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-6 col-xs-12">
+                                    <p class="copyright-text">
+                                    <p>&copy; @DateTime.Now.Year - Manea Alexandru </p>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Categories</h6>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="">Incomes Details</a>
+                            </li>
+                            <li>
+                                <a href="">Expenditure Details</a>
+                            </li>
+                            <li>
+                                <a href="">Avaible Budget</a>
+                            </li>
+                            <li>
+                                <a href="">Income Charts</a>
+                            </li>
+                            <li>
+                                <a href="">Expenditure Charts</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Quick Links</h6>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="">About Us</a>
+                            </li>
+                            <li>
+                                <a href="">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="">Sitemap</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </footer>
+        <script src="~/Scripts/jquery-3.5.0.min.js"></script>
+
+        <script src="~/Scripts/bootstrap.min.js"></script>
+
+        <script src="~/Scripts/alertify.min.js"></script>
+        </body>
 </html>
 

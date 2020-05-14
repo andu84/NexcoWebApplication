@@ -189,6 +189,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\Income.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -281,13 +282,13 @@
     <Content Include="Scripts\jquery-3.5.0.min.map" />
     <Content Include="Views\IncomeExpenditure\List.cshtml" />
     <Content Include="Views\IncomeExpenditure\Index.cshtml" />
-    <Content Include="Views\IncomeExpenditure\LastThreeMounts.cshtml" />
     <Content Include="Views\Chart\Result.cshtml" />
     <Content Include="Views\Nav\CharMenu.cshtml" />
     <Content Include="Views\Shared\ChartShare.cshtml" />
     <Content Include="Views\Incomes\Index.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Incomes\AddOrEdit.cshtml" />
+    <Content Include="Views\Chart\IncomeResults.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<string>
 
 
-@Html.ActionLink("Dashboard", "List", "IncomeExpenditure", null,
+
+@Html.ActionLink("Home", "List", "IncomeExpenditure", null,
 new { @class = "btn btn-block btn-info btn-lg" })
 
 @Html.ActionLink("Income", "List", "Income", null,
@@ -9,6 +10,10 @@ new { @class = "btn btn-block btn-info btn-lg" })
 
 @Html.ActionLink("Expenses", "List", "Expenditure", null,
 new { @class = "btn btn-block btn-info btn-lg" })
+<hr />
 
-@Html.ActionLink("Dashboard", "List", "IncomeExpenditure", null,
+@Html.ActionLink("Incomes Chart", "IncomeResults", "Chart", null,
+new { @class = "btn btn-block btn-info btn-lg" })
+
+@Html.ActionLink("Expenses Chart", "ExpenseResults", "Chart", null,
 new { @class = "btn btn-block btn-info btn-lg" })
