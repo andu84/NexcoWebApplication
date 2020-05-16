@@ -82,6 +82,15 @@ namespace NexcoWeb.WebuI.Controllers
 
             return View();
         }
+        public ActionResult Support()
+        {
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            return View();
+        }
 
         // Need to be fixed
         //public ActionResult SaveDb()

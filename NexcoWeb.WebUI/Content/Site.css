@@ -94,9 +94,16 @@ textarea {
 {
   margin:0
 }
-@media (max-width:991px)
-{
-  .site-footer [class^=col-]
+
+.jumbotron {
+    background-color: #c5a7d4;
+    
+}
+#success_message {
+    display: none;
+}
+@media (max-width:991px) {
+    .site-footer [class^=col-]
   {
     margin-bottom:30px
   }

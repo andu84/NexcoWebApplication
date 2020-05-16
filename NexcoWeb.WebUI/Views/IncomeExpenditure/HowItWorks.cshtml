@@ -4,6 +4,57 @@
     ViewBag.Title = "HowItWorks";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+    <div class="jumbotron jumbotron-howitworks">
+        <div class="container">
+            <div class="row">
 
-<h2>HowItWorks</h2>
+                <div class="col-lg-8">
+                    <h1><strong style="color:#ffd700">How It Works</strong></h1>
 
+                    <p class="text-info">
+                        <strong>
+                            Nexco is a personal finance Management System avaible online on the web.
+                            It helps you plan and compare your income with your expenses, and in this way understand where the money is going.
+                            <br />
+                            As soon as you get the money, you will plan how and how much to spend. First of all, you will plan your usual expenses,
+                            such as household expenses, car, transport ... etc. Then, instead of deciding to buy something based on your mood,
+                            you will decide based on the budget you will forecast to be available.
+
+                            <br />
+                            You will also be able to track your income and expenses each month and you will be able to see the graphical representation
+                            of this data in charts that are classified by category. So that you can better observe which categories of income or expenses
+                            increase or decrease from one month to the next so that you can decide where to act in order to save more money.
+                        </strong>
+                    </p>
+                    <br />
+                    @{
+                        var userName = HttpContext.Current.User.Identity.Name;
+
+                        if (userName != "")
+                        {
+                           
+                            <p>
+                                <a class="btn btn-info btn-md" href="../IncomeExpenditure/Index" role="button">Go back to Your Financial Details</a>
+                            </p>
+                        }
+                        else
+                        {
+
+                       
+                            <p>
+                                <a class="btn btn-info btn-lg " href="../Account/login" role="button">Try it Free!!!</a>                       
+                            </p>
+
+
+
+
+
+
+                        }
+                    }
+                </div>
+                <div class="col-lg-4 visible-lg ">
+                    <img src="~/Content/img/save.png" alt="Incomes" height="500" width="600">
+                </div>
+            </div>
+        </div>

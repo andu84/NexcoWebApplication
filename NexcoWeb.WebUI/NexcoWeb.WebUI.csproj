@@ -192,11 +192,14 @@
     <Content Include="Content\img\balance.png" />
     <Content Include="Content\img\financial.png" />
     <Content Include="Content\img\Income.jpg" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\pay-cash.png" />
     <Content Include="Content\img\pers1.jpg" />
     <Content Include="Content\img\pers2.jpg" />
     <Content Include="Content\img\pers3.jpg" />
     <Content Include="Content\img\pers4.jpg" />
+    <Content Include="Content\img\save.png" />
+    <Content Include="Content\img\support.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -289,6 +292,8 @@
     <Content Include="Views\Chart\IncomeResults.cshtml" />
     <Content Include="Views\Chart\ExpenditureResults.cshtml" />
     <Content Include="Views\IncomeExpenditure\HowItWorks.cshtml" />
+    <Content Include="Views\IncomeExpenditure\Support.cshtml" />
+    <Content Include="Views\IncomeExpenditure\About.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
