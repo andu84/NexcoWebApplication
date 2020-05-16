@@ -31,7 +31,7 @@ namespace NexcoWeb.WebUI.Controllers
                 if (authentication.Authenticate(model.UserName, model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
-                    return Redirect(returnUrl ?? Url.Action("IndexBudget", "AdminBudget"));
+                    return Redirect(returnUrl ?? Url.Action("List", "IncomeExpenditure"));
                 }
                 else
                 {
@@ -47,7 +47,7 @@ namespace NexcoWeb.WebUI.Controllers
          public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("IndexBudget", "AdminBudget");
+            return RedirectToAction("List", "IncomeExpenditure");
         }
     }
 }

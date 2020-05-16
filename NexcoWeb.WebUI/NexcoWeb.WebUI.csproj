@@ -189,7 +189,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\balance.png" />
+    <Content Include="Content\img\financial.png" />
     <Content Include="Content\img\Income.jpg" />
+    <Content Include="Content\img\pay-cash.png" />
+    <Content Include="Content\img\pers1.jpg" />
+    <Content Include="Content\img\pers2.jpg" />
+    <Content Include="Content\img\pers3.jpg" />
+    <Content Include="Content\img\pers4.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -230,11 +237,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminBudgetController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminExpenditureController.cs" />
     <Compile Include="Controllers\Api\BudgetApiController.cs" />
-    <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\ExpenditureController.cs" />
     <Compile Include="Controllers\IncomeController.cs" />
@@ -267,28 +272,23 @@
     <Content Include="Views\Shared\ExpenditureSummary.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Admin\IndexIncome.cshtml" />
     <Content Include="Views\Admin\EditIncome.cshtml" />
-    <Content Include="Views\AdminExpenditure\IndexExpenditure.cshtml" />
-    <Content Include="Views\AdminBudget\IndexBudget.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
-    <Content Include="Views\AdminBudget\Create.cshtml" />
-    <Content Include="Views\AdminBudget\EditBudget.cshtml" />
     <Content Include="Views\AdminExpenditure\Create.cshtml" />
     <Content Include="Views\AdminExpenditure\EditExpenditure.cshtml" />
-    <Content Include="Views\Nav\MainMenu.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Scripts\jquery-3.5.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.0.min.map" />
     <Content Include="Views\IncomeExpenditure\List.cshtml" />
     <Content Include="Views\IncomeExpenditure\Index.cshtml" />
     <Content Include="Views\Chart\Result.cshtml" />
-    <Content Include="Views\Nav\CharMenu.cshtml" />
     <Content Include="Views\Shared\ChartShare.cshtml" />
     <Content Include="Views\Incomes\Index.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Incomes\AddOrEdit.cshtml" />
     <Content Include="Views\Chart\IncomeResults.cshtml" />
+    <Content Include="Views\Chart\ExpenditureResults.cshtml" />
+    <Content Include="Views\IncomeExpenditure\HowItWorks.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -39,7 +39,7 @@ namespace NexcoWeb.WebUI.Controllers
                 repositoryIncome.SaveIncome(income);
                 TempData["message"] = string.Format("The Incomes from {0} has been added",
                     income.DisplayDateIncomes);
-                return RedirectToAction("../IncomeExpenditure/Index");
+                return RedirectToAction("../Income/List");
             }
             else
             {
@@ -62,7 +62,7 @@ namespace NexcoWeb.WebUI.Controllers
                 repositoryIncome.SaveIncome(income);
                 TempData["message"] = string.Format("The Incomes from {0} has been updated",
                     income.DisplayDateIncomes);
-                return RedirectToAction("IndexIncome");
+                return RedirectToAction("../Income/List");
             }
             else
             {

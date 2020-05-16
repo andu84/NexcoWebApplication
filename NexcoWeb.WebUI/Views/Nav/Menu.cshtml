@@ -7,17 +7,23 @@
 @Html.ActionLink("Home", "List", "IncomeExpenditure", null,
 new { @class = "btn btn-block btn-info btn-lg" })
 
-@Html.ActionLink("Income", "List", "Income", null,
+@Html.ActionLink("Budget Detail", "Index", "IncomeExpenditure", null,
 new { @class = "btn btn-block btn-info btn-lg" })
 
-@Html.ActionLink("Expenses", "List", "Expenditure", null,
+@Html.ActionLink("Income Management", "List", "Income", null,
 new { @class = "btn btn-block btn-info btn-lg" })
-<hr/>
+
+@Html.ActionLink("Expense Management", "List", "Expenditure", null,
+new { @class = "btn btn-block btn-info btn-lg" })
+<hr />
+
+@Html.ActionLink("Generals Chart", "Result", "Chart", null,
+new { @class = "btn btn-block btn-info btn-lg" })
 
 @Html.ActionLink("Incomes Chart", "IncomeResults", "Chart", null,
 new { @class = "btn btn-block btn-info btn-lg" })
 
-@Html.ActionLink("Expenses Chart", "ExpenseResults", "Chart", null,
+@Html.ActionLink("Expenses Chart", "ExpenditureResults", "Chart", null,
 new { @class = "btn btn-block btn-info btn-lg" })
 
 

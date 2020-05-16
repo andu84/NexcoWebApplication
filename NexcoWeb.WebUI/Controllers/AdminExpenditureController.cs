@@ -42,7 +42,7 @@ namespace NexcoWeb.WebUI.Controllers
                 repositoryExpenditure.SaveExpenditure(expenditure);
                 TempData["message"] = string.Format("The Expenses from {0} has been added",
                     expenditure.DisplayDateExpenses);             
-                return RedirectToAction("../IncomeExpenditure/Index","");
+                return RedirectToAction("../Expenditure/List","");
             }
             else
             {
@@ -65,7 +65,7 @@ namespace NexcoWeb.WebUI.Controllers
                 repositoryExpenditure.SaveExpenditure(expenditure);
                 TempData["message"] = string.Format("The Expenses from {0} has been updated",
                     expenditure.DisplayDateExpenses);
-                return RedirectToAction("IndexExpenditure");
+                return RedirectToAction("../Expenditure/List");
             }
             else
             {

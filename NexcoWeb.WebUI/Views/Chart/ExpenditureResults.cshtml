@@ -1,0 +1,274 @@
+﻿@model IEnumerable<NexcoWeb.Domain.Entities.Budget>
+
+@{
+    ViewBag.Title = "ExpenditureResults";
+    Layout = "~/Views/Shared/ChartShare.cshtml";
+}
+
+<script>
+
+        var arrDate = [];
+        var arrExpenses = [];
+        var arrTravel = [];
+        var arrFood = [];
+        
+        var arrAuto = [];
+    var arrHouseHold = [];
+    var arrClothing = [];
+    var arrLoan = [];
+    var arrOtherExpenses = [];
+    var arrOtherEntertaiment = [];
+    
+    @foreach (var item in Model) //cycle through each record returned
+    {       // push the result into array to be able to display in chart
+        string dateExpenses= string.Join("",@item.Expenditure.DisplayDateExpenses);
+                @:arrDate.push("@dateExpenses");
+                    string totalExpense = string.Join("",@item.Expenditure.TotalExpense);
+                @:arrExpenses.push(@totalExpense);
+                    string totalTravel = string.Join("", @item.Expenditure.Travel);
+                @:arrTravel.push(@totalTravel);
+                string Food = string.Join("", @item.Expenditure.Food);
+                @:arrFood.push(@Food);
+                string Auto = string.Join("", @item.Expenditure.Auto);
+                @:arrAuto.push(@Auto);
+                string HouseHold = string.Join("", @item.Expenditure.HouseholdExpenses);
+                @:arrHouseHold.push(@HouseHold);
+
+            }
+</script>
+
+<div class="row panel panel-default">
+    <div id="categoris" class="col-lg-2">
+        @Html.Action("Menu", "Nav")
+    </div>
+    <div class="container row col-lg-9">
+        <!-- Nav tabs -->
+        <div class="col-lg-9">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#Expenses" aria-controls="Expenses" role="tab" data-toggle="tab">Total Expenses</a></li>
+            <li role="presentation"><a href="#Travel" aria-controls="Travel" role="tab" data-toggle="tab">Travel</a></li>
+            <li role="presentation"><a href="#Grocery" aria-controls="Grocery" role="tab" data-toggle="tab">Grocery</a></li>
+            <li role="presentation"><a href="#Auto" aria-controls="Auto" role="tab" data-toggle="tab">Auto</a></li>
+            <li role="presentation"><a href="#HouseholdExpenses" aria-controls="HouseholdExpenses" role="tab" data-toggle="tab">Household Expenses</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="Expenses">
+                <figure>
+                    <div id="container"></div>
+                </figure>
+                <script>
+                    Highcharts.chart('container', {
+                        chart: {
+                            type: 'line'
+                        },
+                        title: {
+                            text: 'Monthly Average Expenses'
+                        },
+                        subtitle: {
+                            text: 'Nexco Financial management App'
+                        },
+                        xAxis: {
+                            categories: arrDate // Display the mount
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Pounds (£)'
+                            }
+                        },
+                        plotOptions: {
+                            line: {
+                                dataLabels: {
+                                    enabled: true
+                                },
+                                enableMouseTracking: false
+                            }
+                        },
+                        series: [
+                            {
+                                name: 'Expenses',
+                                data: arrExpenses //Display the total Expenses
+
+                            },
+                        ]
+                    });
+                </script>
+            </div>
+            <div role="tabpanel" class="tab-pane row" id="Travel">
+                <figure>
+                    <div id="container2"></div>
+                </figure>
+                <script>
+                    Highcharts.chart('container2', {
+                        chart: {
+                            type: 'line'
+                        },
+                        title: {
+                            text: 'Monthly Average Travel'
+                        },
+                        subtitle: {
+                            text: 'Nexco Financial management App'
+                        },
+                        xAxis: {
+                            categories: arrDate
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Pounds (£)'
+                            }
+                        },
+                        plotOptions: {
+                            line: {
+                                dataLabels: {
+                                    enabled: true
+                                },
+                                enableMouseTracking: false
+                            }
+                        },
+                        series: [
+
+                            {
+                                name: 'Travel',
+                                data: arrTravel
+                            }
+                        ]
+                    });
+                </script>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="Grocery">
+                <figure>
+                    <div id="container3"></div>
+                    <p class="highcharts-description">
+
+                    </p>
+                </figure>
+                <script>
+                    Highcharts.chart('container3', {
+                        chart: {
+                            type: 'line'
+                        },
+                        title: {
+                            text: 'Monthly Average Grocery'
+                        },
+                        subtitle: {
+                            text: 'Nexco Financial management App'
+                        },
+                        xAxis: {
+                            categories: arrDate // Display the mount
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Pounds (£)'
+                            }
+                        },
+                        plotOptions: {
+                            line: {
+                                dataLabels: {
+                                    enabled: true
+                                },
+                                enableMouseTracking: false
+                            }
+                        },
+                        series: [
+                            {
+                                name: 'Grocery',
+                                data: arrFood //Display total InterestRate
+                            }
+
+                        ]
+                    });
+                </script>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="Auto">
+                <figure>
+                    <div id="container4"></div>
+                </figure>
+                <script>
+                    Highcharts.chart('container4', {
+                        chart: {
+                            type: 'line'
+                        },
+                        title: {
+                            text: 'Monthly Average Auto'
+                        },
+                        subtitle: {
+                            text: 'Nexco Financial management App'
+                        },
+                        xAxis: {
+                            categories: arrDate // Display the mount
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Pounds (£)'
+                            }
+                        },
+                        plotOptions: {
+                            line: {
+                                dataLabels: {
+                                    enabled: true
+                                },
+                                enableMouseTracking: false
+                            }
+                        },
+                        series: [
+                            {
+                                name: 'Auto',
+                                data: arrAuto //Display total Auto
+                            }
+
+                        ]
+                    });
+                </script>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="HouseholdExpenses">
+                <figure>
+                    <div id="container5"></div>
+                </figure>
+                <script>
+                    Highcharts.chart('container5', {
+                        chart: {
+                            type: 'line'
+                        },
+                        title: {
+                            text: 'Monthly Average Interest Rate'
+                        },
+                        subtitle: {
+                            text: 'Nexco Financial management App'
+                        },
+                        xAxis: {
+                            categories: arrDate // Display the mount
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Pounds (£)'
+                            }
+                        },
+                        plotOptions: {
+                            line: {
+                                dataLabels: {
+                                    enabled: true
+                                },
+                                enableMouseTracking: false
+                            }
+                        },
+                        series: [
+                            {
+                                name: 'Household Expenses',
+                                data: arrHouseHold //Display total Household Expenses
+                            }
+
+                        ]
+                    });
+                </script>
+            </div>
+        </div>
+        </div>
+
+        <div class="col-lg-3 visible-lg">
+            <img src="~/Content/img/pay-cash.png" alt="Incomes" height="342" width="342">
+        </div>
+    </div>
+    </div>
+
+

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace NexcoWeb.WebUI.Controllers
 {
-    
+    [Authorize]
     public class BudgetController : Controller
     {
         private readonly IBudgetRepository repository;

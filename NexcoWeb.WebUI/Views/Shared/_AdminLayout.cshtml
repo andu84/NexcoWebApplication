@@ -7,21 +7,28 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>@ViewBag.Title</title>
 </head>
 <body>
     <div class="navbar navbar-inverse" role="navigation">
         <a class="navbar-brand" href="~/budget/List"> Nexco Financial Management App</a>
         <div class="buttons pull-right">
-            @Html.ActionLink("Budget", "List", "IncomeExpenditure", null,
+
+
+
+
+            @Html.ActionLink("Home", "List", "IncomeExpenditure", null,
              new { @class = "btn btn-info btn-sm " })
 
 
-            @Html.ActionLink("Income", "List", "Income", null,
+            @Html.ActionLink("How It Works", "HowItWorks", "IncomeExpenditure", null,
             new { @class = "btn btn-info btn-sm" })
 
-            @Html.ActionLink("Expenses", "List", "Expenditure", null,
+            @Html.ActionLink("Support", "Support", "IncomeExpenditure", null,
             new { @class = "btn btn-info btn-sm" })
+            @Html.ActionLink("About Us", "About", "IncomeExpenditure", null,
+           new { @class = "btn btn-info btn-sm" })
             @{
                 var userName = HttpContext.Current.User.Identity.Name;
                 if (userName != "")
@@ -45,11 +52,12 @@
                     <h6>About</h6>
                     <p class="text-justify">
                         <i>
-                            <i>
-                                Nexco App is an online personal management system
-                            </i>
-                            designed to help you to keep a record of your income from one month to another,
-                            so that you can plan your expenses in a proportionate way to them and save more money.
+                            Designed to inspire you to manage your money
+                            <bold>Nexco Personal Financial Management System</bold> help you to keep a record of your budget
+                            every mounth, so that you can plan your expenses in a proportionate way to them and save more money.
+
+
+                        </i>
                     </p>
                     <div class="container">
                         <div class="row">
@@ -93,7 +101,7 @@
                             <a href="">Contact Us</a>
                         </li>
                         <li>
-                            <a href="">Contribute</a>
+                            <a href="">How is work?</a>
                         </li>
                         <li>
                             <a href="">Privacy Policy</a>

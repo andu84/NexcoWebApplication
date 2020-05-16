@@ -7,11 +7,12 @@ using System.Web.Mvc;
 
 namespace NexcoWeb.WebUI.Controllers
 {
-    
+   
     public class IncomeController : Controller
     {
         private readonly IIncomeRepository repository;
-        public int PageSize = 4;
+        
+        public int PageSize = 6; // Number of Incomes records/page
 
         public IncomeController(IIncomeRepository repo)
         {

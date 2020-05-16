@@ -13,7 +13,7 @@ namespace NexcoWeb.WebUI.Controllers
     public class ExpenditureController : Controller
     {
         private readonly IExpenditureRepository repository;
-        public int PageSize = 4;
+        public int PageSize = 6;
 
         public ExpenditureController(IExpenditureRepository repo)
         {

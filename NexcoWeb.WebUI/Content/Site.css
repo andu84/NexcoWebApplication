@@ -87,6 +87,9 @@ textarea {
   border-radius:100%;
   background-color:#33353d
 }
+.checked {
+    color: orange;
+}
 .copyright-text
 {
   margin:0

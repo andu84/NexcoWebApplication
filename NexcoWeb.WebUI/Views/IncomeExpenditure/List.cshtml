@@ -1,26 +1,144 @@
 ﻿
 @model NexcoWeb.WebUI.Models.BudgetsListViewModel
-@using NexcoWeb.WebUI.HtmlHelpers;
+
 
 @{
     ViewBag.Title = "Budgets";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-@{
-  
 
-}
-@if (TempData["message"] != null)
-{
-    <div class="alert alert-danger">@TempData["message"]</div>
-}
-@foreach (var i in Model.Budgets)
-{
-    @Html.Partial("BudgetSummary", i)
-}
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <h1>
+                    <strong class="text-warning">Nexco</strong>
+                    <span class="text-info">Personal Financial Management System</span>
+                </h1>
+                <br />
+                @{
+                    var userName = HttpContext.Current.User.Identity.Name;
+                   
+                    if (userName != "")
+                    {
+                        <h2 class="text-warning">
+                            Welcome
+                            <span class="text-capitalize"> @userName </span>
+                        </h2>
+                        <p>
+                            <a class="btn btn-info btn-md" href="../IncomeExpenditure/Index" role="button">Go to Your Financial Details</a>
+                        </p>
+                    }
+                    else
+                    {
 
-@Html.ActionLink("The Last 3 mounts Details", "../IncomeExpenditure/LastThreeMounts", null, new { @class = "btn btn-info pull-left" })
-<div class="btn-group pull-right">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
+                        <p class=" text-info">
+                            <strong>Gain Total Control of Your Money !</strong>
+                        </p>
+                        <p>
+                            <a class="btn btn-info btn-lg " href="../Account/login" role="button">Try it Free!!!</a>
+                            <span>
+
+                                <a class="btn btn-info btn-lg " href="../Account/login" role="button">Login</a>
+                            </span>
+                        </p>
+
+
+
+
+
+
+                    }
+                }
+
+            </div>
+            <div class="col-lg-3 visible-lg ">
+                <img src="~/Content/img/financial.png" alt="Incomes" height="200" width="350">
+            </div>
+        </div>
+    </div>
 </div>
+<div class="container">
+    <div class="col-md-4 col-lg-3">
+        <img class="img-rounded " src="~/Content/img/pers1.jpg" alt="..." height="80" width="130">
+        <div class="caption ">
+            <h5 class="text-info">
+                <strong>Mark Smith</strong>
+            </h5>
+            <p class="text-muted">
+                Good enough, but it needs some
+                improvement in the future.!
+            </p>
+            <p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star "></span>
+            </p>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3 ">
+        <img class="img-rounded " src="~/Content/img/pers4.jpg" alt="..." height="80" width="130">
+        <div class="caption ">
+            <h5 class="text-info">
+                <strong>Neil Mathers</strong>
+            </h5>
+            <p class="text-muted">
+                The app is not so grate,
+                I think it needs more improvements !
+            </p>
+            <p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </p>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <img class="img-rounded " src="~/Content/img/pers3.jpg" alt="..." height="80" width="130">
+        <div class="caption ">
+            <h5 class="text-info">
+                <strong>Rachel Roberts</strong>
+            </h5>
+            <p class="text-muted">
+                The app is great, has a good design,
+                you can see your financial data in graphs, and it is very easy to use.
+                I strongly recommended !
+            </p>
+            <p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+            </p>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <img class="img-rounded " src="~/Content/img/pers2.jpg" alt="..." height="80" width="130">
+        <div class="caption ">
+            <h5 class="text-info">
+                <strong>Peter Adams</strong>
+            </h5>
+            <p class="text-muted">
+                Is Free and easy to use!
+                but it needs some new features
+            </p>
+            <p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<br />
 

@@ -14,6 +14,9 @@
             <strong>@Model.Auto</strong>
         </td>
         <td>
+            <strong>@Model.Entertaiment</strong>
+        </td>
+        <td>
             <strong>@Model.HouseholdExpenses</strong>
         </td>
         <td>
@@ -33,11 +36,11 @@
         </td>
         <td>
             <div class="btn btn-info btn-xs">
-                @Html.ActionLink("Edit", "EditIncome", new { expenditureId = @Model.ExpenditureId })
+                @Html.ActionLink("Edit", "../AdminExpenditure/EditExpenditure", new { expenditureId = @Model.ExpenditureId })
             </div>
         </td>
         <td>
-            @using (Html.BeginForm("DeleteIncome", "Admin"))
+            @using (Html.BeginForm("DeleteExpenditure", "AdminExpenditure"))
             {
                 @Html.Hidden("ExpenditureId", @Model.ExpenditureId)
                 <input type="submit" class="btn btn-info btn-xs"

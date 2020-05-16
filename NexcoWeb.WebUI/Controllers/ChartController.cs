@@ -9,7 +9,7 @@ using NexcoWeb.Domain.Entities;
 using NexcoWeb.WebUI.Models;
 
 namespace NexcoWeb.WebUI.Controllers
-{
+{[Authorize]
     public class ChartController : Controller
     {
         // GET: Chart
@@ -56,6 +56,20 @@ namespace NexcoWeb.WebUI.Controllers
         }
 
         public ActionResult IncomeResults()
+        {
+            List<Income> incomes = db.Incomes.ToList();
+            List<Expenditure> expenditures = db.Expenditures.ToList();
+            List<Budget> budgets = db.Budgets.ToList();
+            var minDate = DateTime.Now.AddMonths(-12);
+            var query = from i in incomes
+                        orderby i.IncomeAddedOn descending
+                        join ex in expenditures on i.IncomeAddedOn equals ex.ExpensesAddedOn
+                        where i.IncomeAddedOn > minDate && i.IncomeAddedOn < DateTime.Now
+                        select new Budget { Income = i, Expenditure = ex };
+            return View(query);
+        }
+
+        public ActionResult ExpenditureResults()
         {
             List<Income> incomes = db.Incomes.ToList();
             List<Expenditure> expenditures = db.Expenditures.ToList();

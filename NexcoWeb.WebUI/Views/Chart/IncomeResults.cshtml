@@ -4,12 +4,6 @@
     Layout = "~/Views/Shared/ChartShare.cshtml";
 }
 
-
-
-
-   
-   
-    
     <script>
 
         var arrDate = [];
@@ -40,227 +34,233 @@
         <div id="categoris" class="col-lg-2">
             @Html.Action("Menu", "Nav")
         </div>
-        <div class="container col-lg-9">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#Income" aria-controls="Income" role="tab" data-toggle="tab">Income</a></li>
-                <li role="presentation"><a href="#Salary" aria-controls="Salarys" role="tab" data-toggle="tab">Salary</a></li>
-                <li role="presentation"><a href="#InterestRate" aria-controls="InterestRate" role="tab" data-toggle="tab">Interest Rate</a></li>
-                <li role="presentation"><a href="#OtherJob" aria-controls="OtherJob" role="tab" data-toggle="tab">Other Jobs</a></li>
-                <li role="presentation"><a href="#OtherIncome" aria-controls="OtherIncome" role="tab" data-toggle="tab">Other Incomes</a></li>
-            </ul>
+        <div class="container row col-lg-9">
 
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="Income">
-                    <figure>
-                        <div id="container"></div>
-                    </figure>
-                    <script>
-                        Highcharts.chart('container', {
-                            chart: {
-                                type: 'line'
-                            },
-                            title: {
-                                text: 'Monthly Average Incomes'
-                            },
-                            subtitle: {
-                                text: 'Nexco Financial management App'
-                            },
-                            xAxis: {
-                                categories: arrDate // Display the mount
-                            },
-                            yAxis: {
-                                title: {
-                                    text: 'Pounds (£)'
-                                }
-                            },
-                            plotOptions: {
-                                line: {
-                                    dataLabels: {
-                                        enabled: true
-                                    },
-                                    enableMouseTracking: false
-                                }
-                            },
-                            series: [
-                                {
-                                    name: 'Incomes',
-                                    data: arrIncomes //Display the total income
+            <div class="col-lg-9">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#Income" aria-controls="Income" role="tab" data-toggle="tab">Income</a></li>
+                    <li role="presentation"><a href="#Salary" aria-controls="Salarys" role="tab" data-toggle="tab">Salary</a></li>
+                    <li role="presentation"><a href="#InterestRate" aria-controls="InterestRate" role="tab" data-toggle="tab">Interest Rate</a></li>
+                    <li role="presentation"><a href="#OtherJob" aria-controls="OtherJob" role="tab" data-toggle="tab">Other Jobs</a></li>
+                    <li role="presentation"><a href="#OtherIncome" aria-controls="OtherIncome" role="tab" data-toggle="tab">Other Incomes</a></li>
+                </ul>
 
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="Income">
+                        <figure>
+                            <div id="container"></div>
+                        </figure>
+                        <script>
+                            Highcharts.chart('container', {
+                                chart: {
+                                    type: 'line'
                                 },
-                            ]
-                        });
-                    </script>
-                </div>
-                <div role="tabpanel" class="tab-pane row" id="Salary">
-                    <figure>
-                        <div id="container2"></div>
-                    </figure>
-                    <script>
-                        Highcharts.chart('container2', {
-                            chart: {
-                                type: 'line'
-                            },
-                            title: {
-                                text: 'Monthly Average Salary'
-                            },
-                            subtitle: {
-                                text: 'Nexco Financial management App'
-                            },
-                            xAxis: {
-                                categories: arrDate
-                            },
-                            yAxis: {
                                 title: {
-                                    text: 'Pounds (£)'
-                                }
-                            },
-                            plotOptions: {
-                                line: {
-                                    dataLabels: {
-                                        enabled: true
+                                    text: 'Monthly Average Incomes'
+                                },
+                                subtitle: {
+                                    text: 'Nexco Financial management App'
+                                },
+                                xAxis: {
+                                    categories: arrDate // Display the mount
+                                },
+                                yAxis: {
+                                    title: {
+                                        text: 'Pounds (£)'
+                                    }
+                                },
+                                plotOptions: {
+                                    line: {
+                                        dataLabels: {
+                                            enabled: true
+                                        },
+                                        enableMouseTracking: false
+                                    }
+                                },
+                                series: [
+                                    {
+                                        name: 'Incomes',
+                                        data: arrIncomes //Display the total income
+
                                     },
-                                    enableMouseTracking: false
-                                }
-                            },
-                            series: [
-
-                                {
-                                    name: 'Salary',
-                                    data: arrSalary
-                                }
-                            ]
-                        });
-                    </script>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="InterestRate">
-                    <figure>
-                        <div id="container3"></div>
-                        <p class="highcharts-description">
-
-                        </p>
-                    </figure>
-                    <script>
-                        Highcharts.chart('container3', {
-                            chart: {
-                                type: 'line'
-                            },
-                            title: {
-                                text: 'Monthly Average Interest Rate'
-                            },
-                            subtitle: {
-                                text: 'Nexco Financial management App'
-                            },
-                            xAxis: {
-                                categories: arrDate // Display the mount
-                            },
-                            yAxis: {
+                                ]
+                            });
+                        </script>
+                    </div>
+                    <div role="tabpanel" class="tab-pane row" id="Salary">
+                        <figure>
+                            <div id="container2"></div>
+                        </figure>
+                        <script>
+                            Highcharts.chart('container2', {
+                                chart: {
+                                    type: 'line'
+                                },
                                 title: {
-                                    text: 'Pounds (£)'
-                                }
-                            },
-                            plotOptions: {
-                                line: {
-                                    dataLabels: {
-                                        enabled: true
-                                    },
-                                    enableMouseTracking: false
-                                }
-                            },
-                            series: [
-                                {
-                                    name: 'Interest Rate',
-                                    data: arrInterestRate //Display total InterestRate
-                                }
+                                    text: 'Monthly Average Salary'
+                                },
+                                subtitle: {
+                                    text: 'Nexco Financial management App'
+                                },
+                                xAxis: {
+                                    categories: arrDate
+                                },
+                                yAxis: {
+                                    title: {
+                                        text: 'Pounds (£)'
+                                    }
+                                },
+                                plotOptions: {
+                                    line: {
+                                        dataLabels: {
+                                            enabled: true
+                                        },
+                                        enableMouseTracking: false
+                                    }
+                                },
+                                series: [
 
-                            ]
-                        });
-                    </script>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="OtherIncome">
-                    <figure>
-                        <div id="container4"></div>
-                    </figure>
-                    <script>
-                        Highcharts.chart('container4', {
-                            chart: {
-                                type: 'line'
-                            },
-                            title: {
-                                text: 'Monthly Average Interest Rate'
-                            },
-                            subtitle: {
-                                text: 'Nexco Financial management App'
-                            },
-                            xAxis: {
-                                categories: arrDate // Display the mount
-                            },
-                            yAxis: {
+                                    {
+                                        name: 'Salary',
+                                        data: arrSalary
+                                    }
+                                ]
+                            });
+                        </script>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="InterestRate">
+                        <figure>
+                            <div id="container3"></div>
+                            <p class="highcharts-description">
+
+                            </p>
+                        </figure>
+                        <script>
+                            Highcharts.chart('container3', {
+                                chart: {
+                                    type: 'line'
+                                },
                                 title: {
-                                    text: 'Pounds (£)'
-                                }
-                            },
-                            plotOptions: {
-                                line: {
-                                    dataLabels: {
-                                        enabled: true
-                                    },
-                                    enableMouseTracking: false
-                                }
-                            },
-                            series: [
-                                {
-                                    name: 'Other Incomes',
-                                    data: arrOtherIncomes //Display total Other Incomes
-                                }
+                                    text: 'Monthly Average Interest Rate'
+                                },
+                                subtitle: {
+                                    text: 'Nexco Financial management App'
+                                },
+                                xAxis: {
+                                    categories: arrDate // Display the mount
+                                },
+                                yAxis: {
+                                    title: {
+                                        text: 'Pounds (£)'
+                                    }
+                                },
+                                plotOptions: {
+                                    line: {
+                                        dataLabels: {
+                                            enabled: true
+                                        },
+                                        enableMouseTracking: false
+                                    }
+                                },
+                                series: [
+                                    {
+                                        name: 'Interest Rate',
+                                        data: arrInterestRate //Display total InterestRate
+                                    }
 
-                            ]
-                        });
-                    </script>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="OtherJob">
-                    <figure>
-                        <div id="container5"></div>
-                    </figure>
-                    <script>
-                        Highcharts.chart('container5', {
-                            chart: {
-                                type: 'line'
-                            },
-                            title: {
-                                text: 'Monthly Average Interest Rate'
-                            },
-                            subtitle: {
-                                text: 'Nexco Financial management App'
-                            },
-                            xAxis: {
-                                categories: arrDate // Display the mount
-                            },
-                            yAxis: {
+                                ]
+                            });
+                        </script>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="OtherIncome">
+                        <figure>
+                            <div id="container4"></div>
+                        </figure>
+                        <script>
+                            Highcharts.chart('container4', {
+                                chart: {
+                                    type: 'line'
+                                },
                                 title: {
-                                    text: 'Pounds (£)'
-                                }
-                            },
-                            plotOptions: {
-                                line: {
-                                    dataLabels: {
-                                        enabled: true
-                                    },
-                                    enableMouseTracking: false
-                                }
-                            },
-                            series: [
-                                {
-                                    name: 'Other Jobs',
-                                    data: arrOtherJobs //Display total Other Jobs
-                                }
+                                    text: 'Monthly Average Interest Rate'
+                                },
+                                subtitle: {
+                                    text: 'Nexco Financial management App'
+                                },
+                                xAxis: {
+                                    categories: arrDate // Display the mount
+                                },
+                                yAxis: {
+                                    title: {
+                                        text: 'Pounds (£)'
+                                    }
+                                },
+                                plotOptions: {
+                                    line: {
+                                        dataLabels: {
+                                            enabled: true
+                                        },
+                                        enableMouseTracking: false
+                                    }
+                                },
+                                series: [
+                                    {
+                                        name: 'Other Incomes',
+                                        data: arrOtherIncomes //Display total Other Incomes
+                                    }
 
-                            ]
-                        });
-                    </script>
+                                ]
+                            });
+                        </script>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="OtherJob">
+                        <figure>
+                            <div id="container5"></div>
+                        </figure>
+                        <script>
+                            Highcharts.chart('container5', {
+                                chart: {
+                                    type: 'line'
+                                },
+                                title: {
+                                    text: 'Monthly Average Interest Rate'
+                                },
+                                subtitle: {
+                                    text: 'Nexco Financial management App'
+                                },
+                                xAxis: {
+                                    categories: arrDate // Display the mount
+                                },
+                                yAxis: {
+                                    title: {
+                                        text: 'Pounds (£)'
+                                    }
+                                },
+                                plotOptions: {
+                                    line: {
+                                        dataLabels: {
+                                            enabled: true
+                                        },
+                                        enableMouseTracking: false
+                                    }
+                                },
+                                series: [
+                                    {
+                                        name: 'Other Jobs',
+                                        data: arrOtherJobs //Display total Other Jobs
+                                    }
+
+                                ]
+                            });
+                        </script>
+                    </div>
+
                 </div>
-
+            </div>
+            <div class="col-lg-3 visible-lg">
+                <img src="~/Content/img/Income.jpg" alt="Incomes" height="342" width="342">
             </div>
         </div>
 
