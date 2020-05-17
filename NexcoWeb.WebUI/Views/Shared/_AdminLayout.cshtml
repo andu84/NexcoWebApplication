@@ -11,12 +11,12 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="navbar navbar-inverse" role="navigation">
+    <div class="navbar navbar-inverse " role="navigation">
         <a class="navbar-brand" href="~/budget/List"> Nexco Financial Management App</a>
         <div class="buttons pull-right">
 
 
-            @Html.ActionLink("Home", "List", "IncomeExpenditure", null,
+            @Html.ActionLink("Home", "Home", "IncomeExpenditure", null,
              new { @class = "btn btn-info btn-sm " })
 
 
@@ -62,7 +62,7 @@
                             <div class="col-md-8 col-sm-6 col-xs-12">
                                 <p class="copyright-text">
                                 <p>&copy; @DateTime.Now.Year - Manea Alexandru </p>
-                                </p>
+                                
                             </div>
                         </div>
                     </div>

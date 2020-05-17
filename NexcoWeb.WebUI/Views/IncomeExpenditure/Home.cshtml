@@ -1,0 +1,145 @@
+﻿
+
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="jumbotron jumbotron-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <h1>
+                    <strong style="color:#ffd700">Nexco</strong>
+                    <span class="text-info">Personal Financial Management System</span>
+                </h1>
+                <br />
+                @{
+                    var userName = HttpContext.Current.User.Identity.Name;
+
+                    if (userName != "")
+                    {
+                        <h2>
+                            <strong style="color:#ffd700">
+                                Welcome
+                                <span class="text-capitalize"> @userName </span>
+                            </strong>
+                        </h2>
+                        <p>
+                            <a class="btn btn-info btn-md" href="../IncomeExpenditure/Index" role="button">Go to Your Financial Details</a>
+                        </p>
+                    }
+                    else
+                    {
+
+                        <p class=" text-info">
+                            <strong>Gain Total Control of Your Money !</strong>
+                        </p>
+                        <p>
+                            <a class="btn btn-info btn-lg " href="../Account/login" role="button">Try it Free!!!</a>
+                            <span>
+
+                                <a class="btn btn-info btn-lg " href="../Account/login" role="button">Login</a>
+                            </span>
+                        </p>
+
+
+
+
+
+
+                    }
+                }
+
+            </div>
+            <div class="col-lg-3 visible-lg ">
+                <img src="~/Content/img/financial.png" alt="Incomes" height="200" width="350">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" id="push">
+    <div class="col-md-4 col-lg-3">
+        <img class="img-rounded " src="~/Content/img/pers1.jpg" alt="..." height="80" width="130">
+        <div class="caption ">
+            <h5 class="text-info">
+                <strong>Mark Smith</strong>
+            </h5>
+            <p class="text-muted">
+                Good enough, but it needs some
+                improvement in the future.!
+            </p>
+            <p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star "></span>
+            </p>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3 ">
+        <img src="~/Content/img/pers4.jpg" alt="..." height="80" width="130">
+        <div class="caption ">
+            <h5 class="text-info">
+                <strong>Neil Mathers</strong>
+            </h5>
+            <p class="text-muted">
+                The app is not so grate,
+                I think it needs more improvements !
+            </p>
+            <p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </p>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <img class="img-rounded " src="~/Content/img/pers3.jpg" alt="..." height="80" width="130">
+        <div class="caption ">
+            <h5 class="text-info">
+                <strong>Rachel Roberts</strong>
+            </h5>
+            <p class="text-muted">
+                The app is great, has a good design,
+                you can see your financial data in graphs, and it is very easy to use.
+                I strongly recommended !
+            </p>
+            <p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+            </p>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <img class="img-rounded " src="~/Content/img/pers2.jpg" alt="..." height="80" width="130">
+        <div class="caption ">
+            <h5 class="text-info">
+                <strong>Peter Adams</strong>
+            </h5>
+            <p class="text-muted">
+                Is Free and easy to use!
+                but it needs some new features
+            </p>
+            <p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<br />
+

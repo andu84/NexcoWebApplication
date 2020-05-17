@@ -33,8 +33,9 @@ namespace NexcoWeb.WebUI.Controllers
         public ActionResult Create(Income income)
         {
 
+            
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid )
             {
                 repositoryIncome.SaveIncome(income);
                 TempData["message"] = string.Format("The Incomes from {0} has been added",

@@ -92,11 +92,12 @@
 
                             }
 
-                            </td>
+                            
                             <td>
                                 <div class="btn btn-info btn-xs">
 
                                     @Html.ActionLink("Edit Incomes", "../Admin/EditIncome", new { IncomeId = item.Income.IncomeId })
+                                    </div>
                             </td>
                             <td>
                                 <div class="btn btn-info btn-xs">
@@ -105,8 +106,9 @@
                             </td>
                         </tr>
                     }
+            </table>
         </div>
-        </table>
+        
         <div class="panel-footer">
             @Html.ActionLink("Add new Expenditure", "../AdminExpenditure/Create", null, new { @class = "btn btn-defaul" })
             @Html.ActionLink("Add new Incomes", "../Admin/Create", null, new { @class = "btn btn-defaul" })

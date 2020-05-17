@@ -1,5 +1,5 @@
 ﻿
-@model NexcoWeb.WebUI.Models.BudgetsListViewModel
+@model NexcoWeb.Domain.Entities.Budget
 
 
 @{
@@ -19,15 +19,15 @@
                 <br />
                 @{
                     var userName = HttpContext.Current.User.Identity.Name;
-                   
+
                     if (userName != "")
                     {
-                                <h2>
-                                    <strong style="color:#ffd700">
-                                        Welcome
-                                        <span class="text-capitalize"> @userName </span>
-                                        </strong>
-                                </h2>
+                        <h2>
+                            <strong style="color:#ffd700">
+                                Welcome
+                                <span class="text-capitalize"> @userName </span>
+                            </strong>
+                        </h2>
                         <p>
                             <a class="btn btn-info btn-md" href="../IncomeExpenditure/Index" role="button">Go to Your Financial Details</a>
                         </p>
@@ -61,7 +61,7 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container" id="push">
     <div class="col-md-4 col-lg-3">
         <img class="img-rounded " src="~/Content/img/pers1.jpg" alt="..." height="80" width="130">
         <div class="caption ">
@@ -82,7 +82,7 @@
         </div>
     </div>
     <div class="col-md-4 col-lg-3 ">
-        <img  src="~/Content/img/pers4.jpg" alt="..." height="80" width="130">
+        <img src="~/Content/img/pers4.jpg" alt="..." height="80" width="130">
         <div class="caption ">
             <h5 class="text-info">
                 <strong>Neil Mathers</strong>

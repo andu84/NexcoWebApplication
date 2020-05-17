@@ -189,6 +189,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\about-us.png" />
     <Content Include="Content\img\balance.png" />
     <Content Include="Content\img\financial.png" />
     <Content Include="Content\img\Income.jpg" />
@@ -282,7 +283,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Scripts\jquery-3.5.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.0.min.map" />
-    <Content Include="Views\IncomeExpenditure\List.cshtml" />
     <Content Include="Views\IncomeExpenditure\Index.cshtml" />
     <Content Include="Views\Chart\Result.cshtml" />
     <Content Include="Views\Shared\ChartShare.cshtml" />
@@ -294,6 +294,7 @@
     <Content Include="Views\IncomeExpenditure\HowItWorks.cshtml" />
     <Content Include="Views\IncomeExpenditure\Support.cshtml" />
     <Content Include="Views\IncomeExpenditure\About.cshtml" />
+    <Content Include="Views\IncomeExpenditure\Home.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

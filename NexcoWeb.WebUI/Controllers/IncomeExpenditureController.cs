@@ -16,34 +16,34 @@ namespace NexcoWeb.WebuI.Controllers
     
     public class IncomeExpenditureController : Controller
     {
-        private readonly IBudgetRepository repository;
-        public int PageSize = 4;
+        //private readonly IBudgetRepository repository;
+        //public int PageSize = 4;
 
-        public IncomeExpenditureController(IBudgetRepository repo)
-        {
-            repository = repo;
-        }
+        //public IncomeExpenditureController(IBudgetRepository repo)
+        //{
+        //    repository = repo;
+        //}
 
-        public ViewResult List(string description, int page = 1)
-        {
-            BudgetsListViewModel model = new BudgetsListViewModel
-            {
-                Budgets = repository.Budgets
-                .Where(p => description == null || p.DescriptionBudget == description)
-                .OrderByDescending(p => p.BudgetAddedOn)
-                .Skip((page - 1) * PageSize)
-                .Take(PageSize),
-                PagingInfo = new PagingInfo
-                {
-                    CurrentPage = page,
-                    PerPage = PageSize,
-                    Total = repository.Budgets.Count()
-                },
-                CurrentDescription = description
-            };
+        //public ViewResult List(string description, int page = 1)
+        //{
+        //    BudgetsListViewModel model = new BudgetsListViewModel
+        //    {
+        //        Budgets = repository.Budgets
+        //        .Where(p => description == null || p.DescriptionBudget == description)
+        //        .OrderByDescending(p => p.BudgetAddedOn)
+        //        .Skip((page - 1) * PageSize)
+        //        .Take(PageSize),
+        //        PagingInfo = new PagingInfo
+        //        {
+        //            CurrentPage = page,
+        //            PerPage = PageSize,
+        //            Total = repository.Budgets.Count()
+        //        },
+        //        CurrentDescription = description
+        //    };
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
         // GET: IncomeExpenditure
         public EFDbContext db = new EFDbContext();
         [Authorize]
@@ -54,7 +54,7 @@ namespace NexcoWeb.WebuI.Controllers
             var minDate = DateTime.Now.AddMonths(-6);
             var result = from i in incomes
                          orderby i.IncomeAddedOn descending
-                         join ex in expenditures on i.IncomeAddedOn equals ex.ExpensesAddedOn                         
+                         join ex in expenditures on i.IncomeAddedOn.Month equals ex.ExpensesAddedOn.Month                         
                          where i.IncomeAddedOn > minDate && i.IncomeAddedOn < DateTime.Now
                          select new Budget { Income = i, Expenditure = ex };
 
@@ -80,6 +80,10 @@ namespace NexcoWeb.WebuI.Controllers
         {
             
 
+            return View();
+        }
+        public ActionResult Home()
+        {
             return View();
         }
         public ActionResult Support()

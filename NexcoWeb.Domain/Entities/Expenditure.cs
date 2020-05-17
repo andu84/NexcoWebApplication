@@ -9,12 +9,10 @@ namespace NexcoWeb.Domain.Entities
 {
     public class Expenditure
     {
-        public Budget Budget{ get; }
-        public Expenditure()
-        {
-            Budgets = new List<Budget>();
-        }
+        //The id for Expenditure
         public int ExpenditureId { get; set; }
+
+        //Categorys of Expenditures
         public int? Travel { get; set; }
         public int? Food { get; set; }
         public int? Entertaiment { get; set; }
@@ -26,27 +24,17 @@ namespace NexcoWeb.Domain.Entities
         public string DescriptionExpenditure { get; set; }
         [Required(ErrorMessage = "Period is required")]
         public DateTime ExpensesAddedOn { get; set; }
+        // Get and set the amount of total expenses
         public int? TotalExpense
         {
             get
             {
                return TotalExpense = Travel + Entertaiment + Food + Auto + HouseholdExpenses + Clothing + Loan + OtherExpenses;             
-
             }
-            set
-            {
-
-            }
+            set{ }
         }
-        public string DisplayTextExpenses
-        {
-            get
-            {
-
-                return $"The total Expenses is {TotalExpense} ";
-            }
-
-        }
+        // Get the amount of total expenses to be displayed in string format
+      
         public string DisplayTotalExpenses
         {
             get
@@ -54,19 +42,17 @@ namespace NexcoWeb.Domain.Entities
                 return $"£ {TotalExpense} ";
             }
         }
+        // get the ExpensesAddedOn and set in string fromat like February 2019
         public string DisplayDateExpenses
         {
             get
             {
                 return $"{ExpensesAddedOn:Y} ";
             }
-            set
-            {
-
-            }
+            set  { }
         }
 
-
-        public ICollection<Budget> Budgets { get; }
+        //The Budgets associated with this expenditures
+        //public ICollection<Budget> Budgets { get; }
     }
 }

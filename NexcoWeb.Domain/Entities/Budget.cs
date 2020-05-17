@@ -8,7 +8,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NexcoWeb.Domain.Entities
 {
+
     [Table("Budgets")]
+    //Represent the total Budget
     public class Budget
     {
         public int BudgetId { get; set; }

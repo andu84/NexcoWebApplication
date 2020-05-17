@@ -9,11 +9,7 @@ namespace NexcoWeb.Domain.Entities
 {
     public class Income
     {
-        public Budget Budget { get; }
-        public Income()
-        {
-           // Budgets = new List<Budget>();
-        }
+
         public int IncomeId { get; set; }
         public int? Salary { get; set; }
         public int? InterestRate { get; set; }
@@ -33,7 +29,6 @@ namespace NexcoWeb.Domain.Entities
        
 
         
-
         public string DisplayTextIncomes
         {
             get
@@ -64,6 +59,6 @@ namespace NexcoWeb.Domain.Entities
             }
         }
 
-        public ICollection<Budget> Budgets { get; }
+        //public ICollection<Budget> Budgets { get; }
     }
 }
