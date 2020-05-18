@@ -1,11 +1,9 @@
 ﻿@model NexcoWeb.WebUI.Models.IncomesListViewModel
 @using NexcoWeb.WebUI.HtmlHelpers;
-
 @{
     ViewBag.Title = "Incomes";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 <div class="row panel panel-default">
     <div id="categoris" class="col-lg-3">
         @Html.Action("Menu", "Nav")
@@ -16,7 +14,6 @@
             <h3>Incomes Details</h3>
             <br />
             <table class="table table-striped table-condesed table-bordered">
-
                 <tr>
                     <th>
                         <b>Date</b>
@@ -52,9 +49,11 @@
                     @Html.Partial("IncomeSummary", i)
                 }
             </table>
-            @Html.ActionLink("Create new Incomes", "../Admin/Create", null, new { @class = "btn btn-info pull-left" })
+            @Html.ActionLink("Create new Incomes", "../Admin/Create", null,
+           new { @class = "btn btn-info pull-left" })
             <div class="btn-group pull-right">
-                @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, description = Model.CurrentDescription }))
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+               new { page = x, description = Model.CurrentDescription }))
             </div>
         </div>
     </div>

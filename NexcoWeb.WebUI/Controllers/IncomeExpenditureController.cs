@@ -62,6 +62,9 @@ namespace NexcoWeb.WebuI.Controllers
         }
 
 
+
+
+
         [Authorize]
         public ActionResult LastThreeMounts()
         {        
@@ -76,16 +79,17 @@ namespace NexcoWeb.WebuI.Controllers
             
             return View(result);
         }
+        public ActionResult Home()
+        {
+            return View();
+        }
         public ActionResult HowItWorks()
         {
             
 
             return View();
-        }
-        public ActionResult Home()
-        {
-            return View();
-        }
+        }     
+
         public ActionResult Support()
         {
             return View();
@@ -95,6 +99,12 @@ namespace NexcoWeb.WebuI.Controllers
         {
             return View();
         }
+
+
+
+
+
+
 
         // Need to be fixed
         //public ActionResult SaveDb()

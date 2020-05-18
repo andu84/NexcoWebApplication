@@ -5,13 +5,11 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var userName = HttpContext.Current.User.Identity.Name;
 }
-
 <div class="row panel panel-default">
     <div id="categoris" class="col-lg-3">
         @Html.Action("Menu", "Nav")
     </div>
     <div class="panel-heading col-lg-9">
-      
         <div class="panel-body">
             <h2>
                 <span class="text-info">
@@ -34,6 +32,7 @@
                     <th></th>
                     <th></th>
                 </tr>
+                @*Loop through Model items*@
                 @foreach (var item in Model)
                 {
                     <tr>
@@ -57,7 +56,6 @@
                                     <br /> your income!
                                 </td>
                             }
-
                             int? halfIncome = Income / 2;
                             // If the income is 2 times more than the expenses
                             if (halfIncome > Expense)
@@ -68,7 +66,6 @@
                                     You saved more than half of your incomes!
                                 </td>
                             }
-
                             int? threeQuarterIncome = Income - Income / 4;
                             //user will receive notifications if the expenses exceed  three quarters of the income
                             //and are smaller than total income
@@ -89,15 +86,13 @@
                                     Great, you saved some money!
                                 </td>
                             }
-
                             }
 
-                            
                             <td>
                                 <div class="btn btn-info btn-xs">
 
                                     @Html.ActionLink("Edit Incomes", "../Admin/EditIncome", new { IncomeId = item.Income.IncomeId })
-                                    </div>
+                                </div>
                             </td>
                             <td>
                                 <div class="btn btn-info btn-xs">
@@ -108,7 +103,7 @@
                     }
             </table>
         </div>
-        
+
         <div class="panel-footer">
             @Html.ActionLink("Add new Expenditure", "../AdminExpenditure/Create", null, new { @class = "btn btn-defaul" })
             @Html.ActionLink("Add new Incomes", "../Admin/Create", null, new { @class = "btn btn-defaul" })
