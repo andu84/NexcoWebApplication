@@ -17,9 +17,10 @@ namespace NexcoWeb.WebUI.Controllers
 
         public ActionResult Result()
         {
+            // Specify the data source
             List<Income> incomes = db.Incomes.ToList();
             List<Expenditure> expenditures = db.Expenditures.ToList();
-            List<Budget> budgets = db.Budgets.ToList();
+            // Define the query expression.;
             var minDate = DateTime.Now.AddMonths(-12);
             var query = from i in incomes
                         orderby i.IncomeAddedOn descending
@@ -47,7 +48,7 @@ namespace NexcoWeb.WebUI.Controllers
         {
             List<Income> incomes = db.Incomes.ToList();
             List<Expenditure> expenditures = db.Expenditures.ToList();
-            List<Budget> budgets = db.Budgets.ToList();
+           // List<Budget> budgets = db.Budgets.ToList();
             var query = from i in incomes
                         join ex in expenditures on i.IncomeAddedOn equals ex.ExpensesAddedOn
                         select new Budget { Income = i, Expenditure = ex };
@@ -59,7 +60,7 @@ namespace NexcoWeb.WebUI.Controllers
         {
             List<Income> incomes = db.Incomes.ToList();
             List<Expenditure> expenditures = db.Expenditures.ToList();
-            List<Budget> budgets = db.Budgets.ToList();
+            //List<Budget> budgets = db.Budgets.ToList();
             var minDate = DateTime.Now.AddMonths(-12);
             var query = from i in incomes
                         orderby i.IncomeAddedOn descending
@@ -73,7 +74,7 @@ namespace NexcoWeb.WebUI.Controllers
         {
             List<Income> incomes = db.Incomes.ToList();
             List<Expenditure> expenditures = db.Expenditures.ToList();
-            List<Budget> budgets = db.Budgets.ToList();
+            //List<Budget> budgets = db.Budgets.ToList();
             var minDate = DateTime.Now.AddMonths(-12);
             var query = from i in incomes
                         orderby i.IncomeAddedOn descending

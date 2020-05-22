@@ -1,44 +1,50 @@
 ﻿@model NexcoWeb.Domain.Entities.Income
 
 
-                <tr>
-                    <td>
-                        <strong> @Model.DisplayDateIncomes </strong>
-                    </td>
-                    <td>
-                        <strong>@Model.Salary</strong>
-                    </td>
-                    <td>
-                        <strong>@Model.InterestRate</strong>
-                    </td>
-                    <td>
-                        <strong>@Model.OtherJob</strong>
-                    </td>
-                    <td>
-                        <strong>@Model.OtherIncome</strong>
-                    </td>
-                    <td>
-                        <strong>@Model.DisplayTotalIncome</strong>
-                    </td>
-                    <td>
-                        <strong>@Model.DescriptionIncome</strong>
-                    </td>
-                    <td>
-                        <div class="btn btn-info btn-xs">
-                            @Html.ActionLink("Edit", "../Admin/EditIncome", new { incomeId = @Model.IncomeId })
-                        </div>
-                    </td>
-                    <td>
-                        @using (Html.BeginForm("DeleteIncome", "Admin"))
-                        {
-                            @Html.Hidden("IncomeId", @Model.IncomeId)
-                            <input type="submit" class="btn btn-info btn-xs"
-                                   value="Delete" />
-                        }
+<tr>
+    <td>
+        <strong> @Model.DisplayDateIncomes </strong>
+    </td>
+    <td>
+        <strong>@Model.Salary</strong>
+    </td>
+    <td>
+        <strong>@Model.InterestRate</strong>
+    </td>
+    <td>
+        <strong>@Model.OtherJob</strong>
+    </td>
+    <td>
+        <strong>@Model.OtherIncome</strong>
+    </td>
+    <td>
+        <strong>@Model.DisplayTotalIncome</strong>
+    </td>
+    <td>
+        <strong>@Model.DescriptionIncome</strong>
+    </td>
+    <td>
+        <div class="btn btn-info btn-xs">
+            @Html.ActionLink("Edit", "../Admin/EditIncome", new { incomeId = @Model.IncomeId })
+        </div>
+    </td>
+    <td>
+        <a onclick="Delete(@Model.IncomeId)" class="btn btn-info btn-xs">Delete </a>
 
-                    </td>
-                </tr>
-                
+    </td>
+</tr>
+@section scripts {
+    @*Scritp for Delete button*@
+    <script>
+        function Delete(id) {
+            alertify.confirm('Web Api Crud Operations', 'You are sure to Delete this Record?'
+                , function () {
+                window.location.href = '@Url.Action("Delete","Incomes")/' + id;
+            }, null);
+        }
+    </script>
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryval");
+}
 
 
 

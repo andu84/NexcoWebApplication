@@ -1,7 +1,7 @@
 ﻿@model NexcoWeb.WebUI.Models.IncomesListViewModel
 @using NexcoWeb.WebUI.HtmlHelpers;
 @{
-    ViewBag.Title = "Incomes";
+    ViewBag.Title = "Incomes Details";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <div class="row panel panel-default">
@@ -59,3 +59,15 @@
     </div>
 </div>
 
+@section scripts {
+    @*Scritp for Delete button*@
+    <script>
+        function Delete(id) {
+            alertify.confirm('Web Api Crud Operations', 'You are sure to Delete this Record?'
+                , function () {
+                window.location.href = '@Url.Action("Delete","Incomes")/' + id;
+            }, null);
+        }
+    </script>
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryval");
+}

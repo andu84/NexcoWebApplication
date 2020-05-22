@@ -66,13 +66,9 @@
     <Compile Include="Entities\Expenditure.cs" />
     <Compile Include="Entities\Income.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Migrations\202005131626269_Initial.cs" />
-    <Compile Include="Migrations\202005131626269_Initial.designer.cs">
-      <DependentUpon>202005131626269_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005181556456_Updates.cs" />
-    <Compile Include="Migrations\202005181556456_Updates.designer.cs">
-      <DependentUpon>202005181556456_Updates.cs</DependentUpon>
+    <Compile Include="Migrations\202005211052501_Initial.cs" />
+    <Compile Include="Migrations\202005211052501_Initial.designer.cs">
+      <DependentUpon>202005211052501_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,15 +78,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005131626269_Initial.resx">
-      <DependentUpon>202005131626269_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005181556456_Updates.resx">
-      <DependentUpon>202005181556456_Updates.cs</DependentUpon>
-    </EmbeddedResource>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <EmbeddedResource Include="Migrations\202005211052501_Initial.resx">
+      <DependentUpon>202005211052501_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

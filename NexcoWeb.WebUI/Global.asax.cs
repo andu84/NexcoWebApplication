@@ -24,8 +24,9 @@ namespace NexcoWeb.WebUI
             //GlobalConfiguration.Configure(WebApiConfig.Register);
             Database.SetInitializer<EFDbContext>(null);
             AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);          
-      
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer<EFDbContext>(new DropCreateDatabaseIfModelChanges<EFDbContext>());
+
         }
     }
 }

@@ -16,42 +16,15 @@ namespace NexcoWeb.WebuI.Controllers
     
     public class IncomeExpenditureController : Controller
     {
-        //private readonly IBudgetRepository repository;
-        //public int PageSize = 4;
-
-        //public IncomeExpenditureController(IBudgetRepository repo)
-        //{
-        //    repository = repo;
-        //}
-
-        //public ViewResult List(string description, int page = 1)
-        //{
-        //    BudgetsListViewModel model = new BudgetsListViewModel
-        //    {
-        //        Budgets = repository.Budgets
-        //        .Where(p => description == null || p.DescriptionBudget == description)
-        //        .OrderByDescending(p => p.BudgetAddedOn)
-        //        .Skip((page - 1) * PageSize)
-        //        .Take(PageSize),
-        //        PagingInfo = new PagingInfo
-        //        {
-        //            CurrentPage = page,
-        //            PerPage = PageSize,
-        //            Total = repository.Budgets.Count()
-        //        },
-        //        CurrentDescription = description
-        //    };
-
-        //    return View(model);
-        //}
-        // GET: IncomeExpenditure
+        
+        
         public EFDbContext db = new EFDbContext();
         [Authorize]
         public ActionResult Index()
-        {
+        {   // define the query expression  
             List<Income> incomes = db.Incomes.ToList();
             List<Expenditure> expenditures = db.Expenditures.ToList();
-            var minDate = DateTime.Now.AddMonths(-6);
+            DateTime minDate = DateTime.Now.AddMonths(-12);         
             var result = from i in incomes
                          orderby i.IncomeAddedOn descending
                          join ex in expenditures on i.IncomeAddedOn.Month equals ex.ExpensesAddedOn.Month                         
@@ -102,32 +75,58 @@ namespace NexcoWeb.WebuI.Controllers
 
 
 
+        //Need to be fixed
+        public ActionResult SaveDb()
+        {
+
+            List<Income> incomes = db.Incomes.ToList();
+            List<Expenditure> expenditures = db.Expenditures.ToList();
+            List<Budget> budgets = db.Budgets.ToList();
+            var Allincomes =
+                            from i in incomes
+                            join ex in expenditures on i.IncomeAddedOn equals ex.ExpensesAddedOn
+                            select new { ex.TotalExpense, i.TotalIncome, i.IncomeId, i.IncomeAddedOn };
+
+            foreach (var item in Allincomes)
+            {
+
+                db.Budgets.Add(new Budget()
+                { TotalIncome = item.TotalIncome, TotalExpense = item.TotalExpense, BudgetAddedOn = item.IncomeAddedOn });
+
+            }
+            db.SaveChanges();
+            //Response.Redirect(Request.Url.ToString(), false);
+            return View();
+        }
 
 
+        //private readonly IBudgetRepository repository;
+        //public int PageSize = 4;
 
-
-        // Need to be fixed
-        //public ActionResult SaveDb()
+        //public IncomeExpenditureController(IBudgetRepository repo)
         //{
+        //    repository = repo;
+        //}
 
-        //    List<Income> incomes = db.Incomes.ToList();
-        //    List<Expenditure> expenditures = db.Expenditures.ToList();
-        //    List<Budget> budgets = db.Budgets.ToList();
-        //    var Allincomes =
-        //                    from i in incomes
-        //                    join ex in expenditures on i.IncomeAddedOn equals ex.ExpensesAddedOn
-        //                    select new { ex.TotalExpense, i.TotalIncome, i.IncomeId, i.IncomeAddedOn };
-
-        //    foreach (var item in Allincomes)
+        //public ViewResult List(string description, int page = 1)
+        //{
+        //    BudgetsListViewModel model = new BudgetsListViewModel
         //    {
+        //        Budgets = repository.Budgets
+        //        .Where(p => description == null || p.DescriptionBudget == description)
+        //        .OrderByDescending(p => p.BudgetAddedOn)
+        //        .Skip((page - 1) * PageSize)
+        //        .Take(PageSize),
+        //        PagingInfo = new PagingInfo
+        //        {
+        //            CurrentPage = page,
+        //            PerPage = PageSize,
+        //            Total = repository.Budgets.Count()
+        //        },
+        //        CurrentDescription = description
+        //    };
 
-        //        db.Budgets.Add(new Budget()
-        //        { TotalIncome = item.TotalIncome, TotalExpense = item.TotalExpense, BudgetAddedOn = item.IncomeAddedOn });
-
-        //    }
-        //    db.SaveChanges();
-        //    //Response.Redirect(Request.Url.ToString(), false);
-        //    return View();
+        //    return View(model);
         //}
     }
 }

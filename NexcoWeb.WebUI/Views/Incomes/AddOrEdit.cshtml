@@ -6,51 +6,52 @@
 
 }
 
-    <div class="form-body">
-        @using (Html.BeginForm())
-        {
-            @Html.HiddenFor(model => model.IncomeId)
-            <div class="form-group">
-                @Html.LabelFor(model => model.Salary)
-                @Html.EditorFor(model => model.Salary)
-                @Html.ValidationMessageFor(model => model.Salary)
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.OtherJob)
-                @Html.EditorFor(model => model.OtherJob)
-                @Html.ValidationMessageFor(model => model.OtherJob)
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.OtherIncome)
-                @Html.EditorFor(model => model.OtherIncome)
-                @Html.ValidationMessageFor(model => model.OtherIncome)
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.InterestRate)
-                @Html.EditorFor(model => model.InterestRate)
-                @Html.ValidationMessageFor(model => model.InterestRate)
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.IncomeAddedOn)
-                @Html.EditorFor(model => model.IncomeAddedOn)
-                @Html.ValidationMessageFor(model => model.IncomeAddedOn)
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.DescriptionIncome)
-                @Html.EditorFor(model => model.DescriptionIncome)
-                @Html.ValidationMessageFor(model => model.DescriptionIncome)
-            </div>
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.IncomeId)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Salary)
+            @Html.EditorFor(model => model.Salary)
+            @Html.ValidationMessageFor(model => model.Salary)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OtherJob)
+            @Html.EditorFor(model => model.OtherJob)
+            @Html.ValidationMessageFor(model => model.OtherJob)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OtherIncome)
+            @Html.EditorFor(model => model.OtherIncome)
+            @Html.ValidationMessageFor(model => model.OtherIncome)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.InterestRate)
+            @Html.EditorFor(model => model.InterestRate)
+            @Html.ValidationMessageFor(model => model.InterestRate)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.IncomeAddedOn)
+            @Html.EditorFor(model => model.IncomeAddedOn)
+            @Html.ValidationMessageFor(model => model.IncomeAddedOn)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DescriptionIncome)
+            @Html.EditorFor(model => model.DescriptionIncome)
+            @Html.ValidationMessageFor(model => model.DescriptionIncome)
+        </div>
 
-            <div class="form-group">
-                <input type="submit" name="name" value="Submit" class="btn btn-info" />
-                <input type="submit" name="name" value="Reset" class="btn btn-info" />
-            </div>
-        }
-    </div>
+        <div class="form-group">
+            <input type="submit" name="name" value="Submit" class="btn btn-info" />
+            <input type="submit" name="name" value="Reset" class="btn btn-info" />
+        </div>
+    }
+</div>
 
 @section scripts{
+   
     @System.Web.Optimization.Scripts.Render("~/bundles/jqueryval");
-    }
+}
 
 
 

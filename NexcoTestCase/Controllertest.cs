@@ -8,6 +8,7 @@ using NexcoWeb.WebUI;
 using NexcoWeb.WebUI.Controllers;
 using NexcoWeb.WebuI.Controllers;
 
+
 namespace NexcoTestCase
 {
     [TestClass]
@@ -33,7 +34,7 @@ namespace NexcoTestCase
             //Assert
             Assert.IsNotNull(result);
         }
-        [TestMethod] 
+        [TestMethod]
         public void Index()
         {
             //Arrange
@@ -43,5 +44,29 @@ namespace NexcoTestCase
             //Assert
             Assert.IsNotNull(Vresult);
         }
+
+        [TestMethod]
+        public void Support()
+        {
+            //Arrange
+            IncomeExpenditureController controller = new IncomeExpenditureController();
+            //Act
+            ViewResult result = controller.Support() as ViewResult;
+            //Assert
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public void About()
+        {
+            //Arrange
+            IncomeExpenditureController controller = new IncomeExpenditureController();
+            //Act
+            ViewResult result = controller.About() as ViewResult;
+            //Assert
+            Assert.IsNotNull(result);
+        }
+
+      
+
     }
 }

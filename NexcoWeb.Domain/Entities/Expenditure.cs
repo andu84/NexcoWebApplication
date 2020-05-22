@@ -42,7 +42,7 @@ namespace NexcoWeb.Domain.Entities
                 return $"£ {TotalExpense} ";
             }
         }
-        // get the ExpensesAddedOn and set in string fromat like February 2019
+        // get the ExpensesAddedOn and set in string format like February 2019
         public string DisplayDateExpenses
         {
             get
@@ -53,6 +53,6 @@ namespace NexcoWeb.Domain.Entities
         }
 
         //The Budgets associated with this expenditures
-        //public ICollection<Budget> Budgets { get; }
+        public ICollection<Budget> Budgets { get; }
     }
 }

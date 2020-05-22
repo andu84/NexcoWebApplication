@@ -10,7 +10,7 @@ namespace NexcoWeb.Domain.Entities
 {
 
     [Table("Budgets")]
-    //Represent the total Budget
+   
     public class Budget
     {
         public int BudgetId { get; set; }
@@ -22,32 +22,22 @@ namespace NexcoWeb.Domain.Entities
         public DateTime BudgetAddedOn { get; set; }
         public List<Income> Incomes { get; set; }
         public List<Expenditure> Expenditures { get; set;}
-
-        
-
+       // Budget Total = 
         public int? TotalBudget 
         {
-
             get
             {
-
                 return TotalIncome - TotalExpense;
-
             }
-    set
+            set 
             {
-               
-            }
-            
+            }           
         }
-
-        
 
         public string DisplayTextBudget
         {
             get
             {
-
                 return $"The available Budget is {TotalBudget}";
             }
         }

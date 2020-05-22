@@ -17,15 +17,8 @@ namespace NexcoWeb.WebUI.Controllers
         public AdminExpenditureController(IExpenditureRepository repo)
         {
             repositoryExpenditure = repo;
-
         }
-
-        public ActionResult IndexExpenditure()
-        {
-
-            return View(repositoryExpenditure.Expenditures.OrderByDescending(p => p.ExpensesAddedOn));
-        }
-
+ 
         public ViewResult Create()
         {
             return View(new Expenditure());
@@ -33,9 +26,7 @@ namespace NexcoWeb.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(Expenditure expenditure)
         {
-
-            
-
+           
             if (ModelState.IsValid)
             {
              
@@ -82,7 +73,7 @@ namespace NexcoWeb.WebUI.Controllers
                 TempData["message"] = string.Format("The Expenses from {0} was deleted",
                     deletedExpenditure.DisplayDateExpenses);
             }
-            return RedirectToAction("IndexExpenditure");
+            return RedirectToAction("../Expenditure/List");
         }
     }
 }

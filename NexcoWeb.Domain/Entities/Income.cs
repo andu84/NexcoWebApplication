@@ -9,8 +9,9 @@ namespace NexcoWeb.Domain.Entities
 {
     public class Income
     {
-
+        //The Id of income
         public int IncomeId { get; set; }
+        //category of Incomes
         public int? Salary { get; set; }
         public int? InterestRate { get; set; }
         public int? OtherJob { get; set; }
@@ -18,6 +19,7 @@ namespace NexcoWeb.Domain.Entities
         public string DescriptionIncome { get; set; }
         public DateTime IncomeAddedOn { get; set; }
         [Required(ErrorMessage = "Period is required")]
+        // Get and set the amount of total incomes
         public int? TotalIncome
         {
             get
@@ -26,19 +28,7 @@ namespace NexcoWeb.Domain.Entities
             }
             set { }
         }
-       
-
-        
-        public string DisplayTextIncomes
-        {
-            get
-            {
-
-                return $"The total Income is {Salary + InterestRate + OtherJob + OtherIncome}";
-            }
-
-        }
-
+        // Get the amount of total incomes to be displayed in string format
         public string DisplayTotalIncome
         {
             get
@@ -46,7 +36,7 @@ namespace NexcoWeb.Domain.Entities
                 return $"£ { TotalIncome}";
             }
         }
-
+        // get the IncomeAddedOn and set in string format like February 2019
         public string DisplayDateIncomes
         {
             get
@@ -59,6 +49,6 @@ namespace NexcoWeb.Domain.Entities
             }
         }
 
-        //public ICollection<Budget> Budgets { get; }
+        public ICollection<Budget> Budgets { get; }
     }
 }

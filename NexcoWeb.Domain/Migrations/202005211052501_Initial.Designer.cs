@@ -13,7 +13,7 @@ namespace NexcoWeb.Domain.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202005131626269_Initial"; }
+            get { return "202005211052501_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -18,13 +18,7 @@ namespace NexcoWeb.WebUI.Controllers
         {
             repositoryIncome = repo;
 
-
-        }
-        public ActionResult IndexIncome()
-        {
-            return View(repositoryIncome.Incomes.OrderByDescending(p => p.IncomeAddedOn));
-        }
-
+        }     
         public ViewResult Create()
         {
             return View(new Income());
@@ -32,9 +26,7 @@ namespace NexcoWeb.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(Income income)
         {
-
-            
-
+          
             if (ModelState.IsValid )
             {
                 repositoryIncome.SaveIncome(income);
@@ -53,7 +45,6 @@ namespace NexcoWeb.WebUI.Controllers
                 (p => p.IncomeId == incomeId);
             return View(income);
         }
-
 
         [HttpPost]
         public ActionResult EditIncome(Income income)
@@ -79,7 +70,7 @@ namespace NexcoWeb.WebUI.Controllers
                 TempData["message"] = string.Format(" The Incomes from {0} was deleted",
                     deletedIncome.DisplayDateIncomes);
             }
-            return RedirectToAction("IndexIncome");
+            return RedirectToAction("../Income/List");
         }
 
 
